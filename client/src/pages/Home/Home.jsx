@@ -48,7 +48,7 @@ function Home() {
             <option value="south">South</option>
           </select>
           <select name="category" onChange={changeHandler}>
-            <option value="">Who would you like to help?(All)</option>
+            <option value="">{"Who would you like to help? (All)"}</option>
             <option value="Environment">Environment</option>
             <option value="at risk youth">at risk youth</option>
             <option value="elderly people">elderly people</option>
