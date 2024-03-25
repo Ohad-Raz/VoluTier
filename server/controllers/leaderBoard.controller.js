@@ -51,7 +51,7 @@ const getGlobalScores=async(req,res)=>{
         globalScores.sort((a,b)=>{
             return b.totalVolunteer-a.totalVolunteer
         })
-        res.send(globalScores)
+        res.send({globalScores})
 
     }catch(e){
         console.log("globalScores",e)
