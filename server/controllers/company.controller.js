@@ -2,6 +2,16 @@ const { Company } = require('../models/company.model')
 const bcrypt = require("bcryptjs")
 const { generateToken } = require('../utils/jwt')
 
+const getCompanies = async (req, res) => {
+    try {
+    const query =  req.query
+    const company = await Company.find({...query})
+    res.send(company)
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
 const Register = async (req, res) => {
     try {
         const body = req.body;
@@ -35,4 +45,30 @@ const Login = async (req, res) =>{
     }
 }
 
-module.exports = {Register, Login};
+const updateCompany = async (req, res) => {
+    try {
+        const { companyId } = req.params;
+        const updatedCompany = await Company.findByIdAndUpdate(companyId, req.body, { new: true });
+        if (!updatedCompany) {
+            return res.status(404).json({ message: 'Company not found' });
+        }
+        res.status(200).json(updatedCompany);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
+const deleteCompany = async (req, res) => {
+    try {
+        const { companyId } = req.params;
+        const deletedCompany = await Company.findByIdAndDelete(companyId);
+        if (!deletedCompany) {
+            return res.status(404).json({ message: 'Company not found' });
+        }
+        res.status(200).json({ message: 'Company deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
+module.exports = {Register, Login, getCompanies, deleteCompany, updateCompany};
