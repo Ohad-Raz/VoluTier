@@ -45,10 +45,10 @@ export default function UserManager({children}) {
 
     const getUser=async ()=>{
       try {
-        const response= await fetch(`${pageBaseUrl}users/login`,optionsWithToken(getOptions,UserToken))
+        const response= await fetch(`${pageBaseUrl}employee/db`,optionsWithToken(getOptions,UserToken))
         const data=await response.json()
         if(data.message)console.log(data.message)
-        if(data.user)setUserObj({...data.user,id:data.user._id});
+        if(data.link)setUserObj({...data.link});
       } catch (error) {
         console.log(error)
       }
