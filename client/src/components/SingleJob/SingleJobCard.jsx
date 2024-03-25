@@ -40,13 +40,14 @@ function SingleJobCard() {
           <p className={styles.info}>Location: {volunteerJob.location}</p>
           <p className={styles.info}>Business ID: {volunteerJob.businessId}</p>
           <p className={styles.info}>Contact Phone: {volunteerJob.contactPhone}</p>
-          <p className={styles.info}>XP: {volunteerJob.XP}</p>
           <div className={styles.categories}>
             {volunteerJob.categories.map((category, index) => (
               <span key={index} className={styles.category}>{category}</span>
             ))}
           </div>
-          <p className={styles.info}>Status: {volunteerJob.status}</p>
+          <br></br>
+            <hr></hr>   <br></br>
+            <p className={styles.info}>Status: {volunteerJob.status}</p> {/* Status */}
           <button className={styles.button}>Apply</button>
         </div>
       </div>
