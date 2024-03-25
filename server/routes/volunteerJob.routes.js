@@ -6,7 +6,7 @@ const { updateJobStatusToActive } = require('../controllers/volunteerJob.control
 router.post('/', volunteerJobController.create);
 router.get('/', volunteerJobController.getAll);
 router.get('/:id', volunteerJobController.getById);
-router.put('/:id', volunteerJobController.updateById);
+router.patch('/:id', volunteerJobController.updateById);
 router.delete('/:id', volunteerJobController.deleteById);
 router.post('/:jobId/apply', volunteerJobController.apply);
 router.patch('/:jobId/complete', volunteerJobController.updateJobStatusAndAwardXP);
