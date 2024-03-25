@@ -1,23 +1,32 @@
 .cardContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .card {
-  flex-basis: calc(33.33% - 20px); /* Three cards in a row with margin between them */
-  margin-bottom: 20px;
+  min-width: 50rem;
+  width: 100rem;
+  margin: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
 }
 
+.imgContainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+
+
+}
 .image {
-  width: 100%;
+  width: 55%;
   height: auto;
-  max-height: 200px; /* Limit image height */
+  /* max-height: 200px; */
   object-fit: cover;
-  border-bottom: 1px solid #ccc; /* Add border between image and details */
+  border-bottom: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .details {
@@ -60,24 +69,9 @@
   font-size: 0.875rem;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 1rem; /* Add margin to separate from other content */
+  margin-top: 1rem;
 }
 
 .button:hover {
   background-color: #0056b3;
-}
-
-
-
-/* Media query for responsive layout */
-@media (max-width: 768px) {
-  .card {
-    flex-basis: calc(50% - 20px); /* Two cards in a row for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    flex-basis: 100%; /* Single card per row for even smaller screens */
-  }
 }

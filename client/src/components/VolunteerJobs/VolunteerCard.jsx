@@ -28,14 +28,14 @@ function VolunteerCard() {
           <img src={volunteerJob.imgURL} alt="Volunteer Job" className={styles.image} />
           <div className={styles.details}>
             <h3 className={styles.title}>{volunteerJob.title}</h3> {/* Title */}
-            <p className={styles.description}>{volunteerJob.description}</p> {/* Description */}
+        
             <p className={styles.info}>Max Amount: {volunteerJob.maxAmount}</p> {/* Max Amount */}
             <p className={styles.info}>Start Date: {new Date(volunteerJob.startDate).toLocaleDateString()}</p> {/* Start Date */}
             <p className={styles.info}>End Date: {new Date(volunteerJob.endDate).toLocaleDateString()}</p> {/* End Date */}
-            <p className={styles.info}>Estimated Hours: {volunteerJob.estimatedHours}</p> {/* Estimated Hours */}
+          
             <p className={styles.info}>Location: {volunteerJob.location}</p> {/* Location */}
-            <p className={styles.info}>Business ID: {volunteerJob.businessId}</p> {/* Business ID */}
-            <p className={styles.info}>Contact Phone: {volunteerJob.contactPhone}</p> {/* Contact Phone */}
+  
+          
             <p className={styles.info}>XP: {volunteerJob.XP}</p> {/* XP */}
             <div className={styles.categories}>
               {volunteerJob.categories.map((category, index) => (
