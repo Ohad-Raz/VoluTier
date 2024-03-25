@@ -10,7 +10,7 @@ export const postOptions = {
     headers: { 'Content-Type': 'application/json' },
     mode:'cors'
   };
-export const pageBaseUrl="https://localhost:4200/";
+export const pageBaseUrl="http://localhost:4200/api/v1/";
 
 export const getOptions = {
   method: 'Get',

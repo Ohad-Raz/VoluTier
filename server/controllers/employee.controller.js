@@ -47,14 +47,14 @@ const Login = async (req, res) =>{
         const isMatch = await bcrypt.compare(password, employee.password)
         if(isMatch){
             const token = generateToken({id: employee._id ,email: employee.email, role: "employee"})
-        return res.send({employee, token});
+        return res.send({user:employee, token});
     } 
-    return res.status(401).send("Email or password are incorrect");
+    return res.status(401).send({message:"Email or password are incorrect"});
     };
-    return res.status(401).send("Email or password are incorrect");
+    return res.status(401).send({message:"Email or password are incorrect"});
     }
     catch(err){
-        res.status(400).send("Cannot Log in")
+        res.status(400).send({message:"Cannot Log in"})
     }
 }
 
