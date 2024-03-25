@@ -1,0 +1,83 @@
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  flex-basis: calc(33.33% - 20px); /* Three cards in a row with margin between them */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Limit image height */
+  object-fit: cover;
+  border-bottom: 1px solid #ccc; /* Add border between image and details */
+}
+
+.details {
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+}
+
+.info {
+  margin-bottom: 0.5rem;
+}
+
+.categories {
+  margin-top: 1rem;
+}
+
+.category {
+  display: inline-block;
+  background-color: #f0f0f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.button {
+  display: block;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem; /* Add margin to separate from other content */
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Media query for responsive layout */
+@media (max-width: 768px) {
+  .card {
+    flex-basis: calc(50% - 20px); /* Two cards in a row for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex-basis: 100%; /* Single card per row for even smaller screens */
+  }
+}
