@@ -8,6 +8,7 @@ import NavBar from './components/Navbar/Navbar'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthPage from './pages/Auth/authPage';
 import UserManager from './context/UserContext';
+import LeaderBoard from "./pages/leaderBoard/leaderBoard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Feed" element={<Feed />} />
             <Route path='/auth' element={<AuthPage/>}/>
+            <Route path='/leaderboard' element={<LeaderBoard/>}/>
           </Routes>
         </main>
       </BrowserRouter>
