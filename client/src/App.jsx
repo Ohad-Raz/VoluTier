@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthPage from './pages/Auth/authPage';
 import UserManager from './context/UserContext';
 import LeaderBoard from "./pages/leaderBoard/leaderBoard";
+import SingleJob from "./pages/SingleJob/SingleJob";
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Feed" element={<Feed />} />
+            <Route path="/feed" element={<Feed />} />
             <Route path='/auth' element={<AuthPage/>}/>
             <Route path='/leaderboard' element={<LeaderBoard/>}/>
+            <Route path='/volunteerJobs/:volunteerJobsId' element={<SingleJob/>}/>
+
           </Routes>
         </main>
       </BrowserRouter>

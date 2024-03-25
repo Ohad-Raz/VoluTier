@@ -3,10 +3,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.cardContainer  a{
-  
-  text-decoration: none;
-}
 
 .card {
   flex-basis: calc(33.33% - 20px); /* Three cards in a row with margin between them */
