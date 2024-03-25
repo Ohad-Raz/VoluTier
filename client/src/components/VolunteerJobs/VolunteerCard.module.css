@@ -3,8 +3,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.cardContainer  a{
-  
+
+.cardContainer a {
   text-decoration: none;
 }
 
@@ -14,6 +14,13 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
+  background: linear-gradient(to bottom right, #b2d7ff, #f0f8ff); /* Light blue gradient background */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition on hover */
+}
+
+.card:hover {
+  background: linear-gradient(to bottom right, #86b9f7, #d2e4f8); /* Light blue gradient background on hover */
+  transform: translateY(-5px); /* Move card up slightly on hover */
 }
 
 .image {
@@ -26,11 +33,15 @@
 
 .details {
   padding: 1.5rem;
+  color: #777; /* Lighter text color */
+  font-weight: 540;
+  font-family: Arial, sans-serif;
 }
 
 .title {
   font-size: 1.25rem;
   margin-bottom: 1rem;
+  color: black;
 }
 
 .description {
@@ -70,8 +81,6 @@
 .button:hover {
   background-color: #0056b3;
 }
-
-
 
 /* Media query for responsive layout */
 @media (max-width: 768px) {

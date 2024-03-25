@@ -36,12 +36,13 @@ function VolunteerCard() {
             <p className={styles.info}>Location: {volunteerJob.location}</p> {/* Location */}
   
           
-            <p className={styles.info}>XP: {volunteerJob.XP}</p> {/* XP */}
             <div className={styles.categories}>
               {volunteerJob.categories.map((category, index) => (
                 <span key={index} className={styles.category}>{category}</span>
               ))}
             </div>
+            <br></br>
+            <hr></hr>   <br></br>
             <p className={styles.info}>Status: {volunteerJob.status}</p> {/* Status */}
             {/* Created At: Display createdAt if needed */}
             <button className={styles.button}>Apply</button>
