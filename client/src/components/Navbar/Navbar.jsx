@@ -68,7 +68,7 @@ export default function Navbar(props) {
 
 
     return (
-      <Box sx={{ flexGrow: 1 ,position:'sticky',top:0 ,zIndex:1000}}>
+      <Box sx={{ flexGrow: 1 ,position:'sticky',top:0 ,zIndex:1000, width:"100%"}}>
         <AppBar pall color="primary" position="static">
           <Toolbar>
             <IconButton
@@ -112,11 +112,11 @@ export default function Navbar(props) {
               <IconButton onClick={props.toggleDark} color="inherit">
                 <FontAwesomeIcon icon={props.isDark?faSun:faMoon}/>
               </IconButton>
-              <Box sx={{display:"flex"}} onClick={UserID?handleUserMenuOpen:() => handleNavigate("/register")}>
+              <Box sx={{display:"flex"}} onClick={UserID?handleUserMenuOpen:() => handleNavigate("/auth")}>
                 {UserID?<p>{UserObj.fullname}</p>:<Button
                   variant="contained"
                   color="success"
-                  onClick={() => handleNavigate("/register")}
+                  onClick={() => handleNavigate("/auth")}
                   >
                     {"Login"}
                   </Button>
