@@ -20,6 +20,24 @@ const getEmployeeScores=async(req,res)=>{
 }
 
 const getEmployeeVol=async(req,res)=>{
+    try {
+        const {companyID}=req.params
+        const leaderBoard=await Company.findById(companyID)
+        .select('employeeList companyName')
+        .populate({path:'employeeList',select:'id totalVolunteer username' })
+
+        leaderBoard.employeeList.sort((a,b)=>{
+            return b.totalVolunteer-a.totalVolunteer
+        })
+
+
+        res.send(leaderBoard)
+    } catch (error) {
+        console.log("getEmployeeScore",e)
+        res.status(400).send("Error")
+    }    
+
+
 
 }
 
@@ -43,4 +61,4 @@ const getGlobalScores=async(req,res)=>{
 }
 
 
-module.exports={getGlobalScores,getEmployeeScores}
+module.exports={getGlobalScores,getEmployeeScores,getEmployeeVol}
