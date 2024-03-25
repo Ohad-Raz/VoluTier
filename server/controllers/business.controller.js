@@ -45,24 +45,24 @@ const Login = async (req, res) =>{
     }
 }
 
-const updateEmployee = async (req, res) => {
+const updateBusiness = async (req, res) => {
     try {
-        const { employeeId } = req.params;
-        const updatedEmployee = await Employee.findByIdAndUpdate(employeeId, req.body, { new: true });
-        if (!updatedEmployee) {
-            return res.status(404).json({ message: 'Employee not found' });
+        const { businessId } = req.params;
+        const updatedBusiness = await Business.findByIdAndUpdate(businessId, req.body, { new: true });
+        if (!updatedBusiness) {
+            return res.status(404).json({ message: 'Business not found' });
         }
-        res.status(200).json(updatedEmployee);
+        res.status(200).json(updatedBusiness);
     } catch (error) {
         res.status(500).json({ message: 'Server Error' });
     }
 };
 
-const deleteEmployee = async (req, res) => {
+const deleteBusiness = async (req, res) => {
     try {
-        const { employeeId } = req.params;
-        const deletedEmployee = await Employee.findByIdAndDelete(employeeId);
-        if (!deletedEmployee) {
+        const { businessId } = req.params;
+        const deletedBusiness = await Business.findByIdAndDelete(businessId);
+        if (!deletedBusiness) {
             return res.status(404).json({ message: 'Employee not found' });
         }
         res.status(200).json({ message: 'Employee deleted successfully' });
@@ -72,4 +72,4 @@ const deleteEmployee = async (req, res) => {
 };
 
 
-module.exports = {Register, Login, getBusinesses, deleteEmployee, updateEmployee};
+module.exports = {Register, Login, getBusinesses, deleteBusiness, updateBusiness};
