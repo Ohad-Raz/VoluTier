@@ -15,6 +15,7 @@ function Navbar() {
             <Link to="/Feed">Feed</Link>
             <Link to="/Company">Company</Link>
             <Link to="/leaderboard">Leader Board</Link>
+            <Link to="/auth">Auth</Link>
           </div>
         </div>
       </header>
