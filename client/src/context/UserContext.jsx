@@ -7,6 +7,7 @@ export default function UserManager({children}) {
 
     const SignUpFunc= async(signUpObj)=>{
       console.log(signUpObj)
+      console.log(`${pageBaseUrl}${signUpObj.select}/register`)
     //   try {
     //     const response= await fetch(`${pageBaseUrl}users/register`,{...postOptions,body:JSON.stringify({email,password,fullname})})
     //     const data=await response.json()

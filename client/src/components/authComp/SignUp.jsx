@@ -1,10 +1,11 @@
 import React, { useContext,useState,useEffect } from 'react'
-import { getObjHandleForm } from '../utils/general'
-import { UserContext } from '../contexts/UserManager'
 import Select from 'react-select';
+import { getObjHandleForm } from '../../utils/general';
+import { UserContext } from '../../context/UserContext';
 
 
 export default function SignUp() {
+    
     const {SignUpFunc} =useContext(UserContext);
     const [ErrorMsg, setErrorMsg] = useState("")
 
