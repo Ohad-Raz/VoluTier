@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const volunteerJobSchema = new mongoose.Schema({
-    business: {
+    businessId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Business', // Assuming you have a Business model
         required: false
