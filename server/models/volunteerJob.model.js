@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const volunteerJobSchema = new mongoose.Schema({
     businessId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Business', // Assuming you have a Business model
+        ref: 'Business',
         required: false
     },
     title: {
@@ -24,7 +24,7 @@ const volunteerJobSchema = new mongoose.Schema({
     },
     applications: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' // Assuming you have a User model
+        ref: 'User'
     }],
     startDate: {
         type: Date,
