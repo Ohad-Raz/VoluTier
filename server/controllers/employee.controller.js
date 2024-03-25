@@ -12,6 +12,19 @@ const getEmployees = async (req, res) => {
     }
 };
 
+const getEmployee =  async(req,res)=>{
+    try{
+        const {role}=req.employee
+        const link = await Employee.findById(req.employee.id)
+        res.send({
+            link:{...link._doc,role}
+        })
+    }
+    catch(err){
+        res.status(400).send("cannot find")
+    }
+}
+
 const Register = async (req, res) => {
     try {
         const body = req.body;
@@ -34,14 +47,14 @@ const Login = async (req, res) =>{
         const isMatch = await bcrypt.compare(password, employee.password)
         if(isMatch){
             const token = generateToken({id: employee._id ,email: employee.email, role: "employee"})
-        return res.send({employee, token});
+        return res.send({user:employee, token});
     } 
-    return res.status(401).send("Email or password are incorrect");
+    return res.status(401).send({message:"Email or password are incorrect"});
     };
-    return res.status(401).send("Email or password are incorrect");
+    return res.status(401).send({message:"Email or password are incorrect"});
     }
     catch(err){
-        res.status(400).send("Cannot Log in")
+        res.status(400).send({message:"Cannot Log in"})
     }
 }
 
@@ -72,4 +85,4 @@ const deleteEmployee = async (req, res) => {
 };
 
 
-module.exports = {Register, Login, getEmployees, deleteEmployee, updateEmployee};
+module.exports = {Register, Login, getEmployees, deleteEmployee, updateEmployee, getEmployee};

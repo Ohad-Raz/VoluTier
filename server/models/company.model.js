@@ -7,7 +7,7 @@ const companySchema = new mongoose.Schema(
         password:{type: String, required:true},
         companyName:{type: String, required:true},
         about:{type: String},
-        totalVolunteer:{type: String , default: 0},
+        totalVolunteer:{type: Number , default: 0},
         employeeList: [{type: mongoose.Types.ObjectId, ref: "Employee" }],
         imageUrl: {type:String ,default:"https://w7.pngwing.com/pngs/408/205/png-transparent-wix-com-web-application-livechat-email-miscellaneous-text-logo.png"},
     }

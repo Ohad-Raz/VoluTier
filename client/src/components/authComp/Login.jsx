@@ -17,9 +17,9 @@ export default function Login() {
     }
 
     const selectOptions = [
-        { value: 'Employee', label: 'Employee' },
-        { value: 'Company', label: 'Company' },
-        { value: 'Volunteer', label: 'Volunteer Place' },
+        { value: 'employee', label: 'Employee' },
+        { value: 'company', label: 'Company' },
+        // { value: 'Volunteer', label: 'Volunteer Place' },
     ];
     const [SelectOpt, SetSelectOpt] = useState(selectOptions[0])
     const handleSelectChange=(selectOptions)=>{
@@ -37,10 +37,10 @@ export default function Login() {
                 options={selectOptions}
                 placeholder="Select an option"
             />
-            <label htmlFor="username">
+            <label htmlFor="email">
                 User name:
             </label>
-            <input type="text" name="username" />
+            <input type="email" name="email" />
 
             <label htmlFor="password">
                 Password: 

@@ -27,18 +27,18 @@ export default function UserManager({children}) {
 
     const LoginFunc=async(loginObj)=>{
       console.log(loginObj)
-    //   try {
-    //     const response= await fetch(`${pageBaseUrl}users/login`,{...postOptions,body:JSON.stringify({email,password})})
-    //     const data=await response.json()
-    //     if(data.message){
-    //       return data.message
-    //     }
-    //     setUserObj({...data.user,id:data.user._id})
-    //     setUserToken(data.token)
-    //   } catch (error) {
-    //    console.log(error) 
-    //    return "error"
-    //   }
+      try {
+        const response= await fetch(`${pageBaseUrl}${loginObj.select}/login`,{...postOptions,body:JSON.stringify(loginObj)})
+        const data=await response.json()
+        if(data.message){
+          return data.message
+        }
+        setUserObj({...data.user,id:data.user._id})
+        setUserToken(data.token)
+      } catch (error) {
+       console.log(error) 
+       return "error"
+      }
       return "success"
         
     }

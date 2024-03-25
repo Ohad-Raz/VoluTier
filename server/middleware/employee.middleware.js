@@ -1,4 +1,4 @@
-const { verifyToken, decodeToken } = require("../utils/jwt");
+const { verifyToken } = require("../utils/jwt");
 
 const empAuth = (req, res, next) => {
   try {
@@ -9,7 +9,7 @@ const empAuth = (req, res, next) => {
     if (!payload) return res.status(401).send("Not Authorized");
     req.employee = payload;
 
-    const employeeId = decodeToken(token).id;
+    const employeeId = payload.id;
     console.log("Employee ID:", employeeId);
 
     next();

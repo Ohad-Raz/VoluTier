@@ -1,4 +1,5 @@
 const { Company } = require('../models/company.model')
+const { Employee } = require('../models/employee.model');
 const bcrypt = require("bcryptjs")
 const { generateToken } = require('../utils/jwt')
 
@@ -11,6 +12,19 @@ const getCompanies = async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 };
+
+const getCompany =  async(req,res)=>{
+    try{
+        const {role}=req.company
+        const link = await Company.findById(req.company.id)
+        res.send({
+            link:{...link._doc,role}
+        })
+    }
+    catch(err){
+        res.status(400).send("cannot find")
+    }
+}
 
 const Register = async (req, res) => {
     try {
@@ -71,4 +85,20 @@ const deleteCompany = async (req, res) => {
     }
 };
 
-module.exports = {Register, Login, getCompanies, deleteCompany, updateCompany};
+const addEmployeeToCompany = async (req, res) => {
+    const { employeeId, companyId } = req.body;
+    try {
+        const company = await Company.findById(companyId);
+        if (!company) {
+            return res.status(404).send("company not found");
+        }
+        company.employeeList.push(employeeId);
+        await company.save();
+        res.status(200).send("Employee added to company successfully");
+    } catch (err) {
+        console.error(err);
+        res.status(400).send("Cannot add employee, bad request");
+    }
+};
+
+module.exports = {Register, Login, getCompanies, deleteCompany, updateCompany, addEmployeeToCompany, getCompany};
