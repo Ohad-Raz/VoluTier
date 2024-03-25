@@ -10,6 +10,7 @@ router.patch('/:id', volunteerJobController.updateById);
 router.delete('/:id', volunteerJobController.deleteById);
 router.post('/:jobId/apply', volunteerJobController.apply);
 router.patch('/:jobId/complete', volunteerJobController.updateJobStatusAndAwardXP);
+
 router.post('/updateStatusToActive', (req, res) => {
     try {
         updateJobStatusToActive();
