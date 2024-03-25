@@ -154,7 +154,7 @@ const volunteerJobController = {
     }
   },
   getVolunteerByFilter: async (req, res) => {
-    const { area, category } = req.body;
+    const { area, category, startDate, amount } = req.body;
     const query = {};
 
     if (area) {
@@ -163,6 +163,10 @@ const volunteerJobController = {
 
     if (category) {
       query.categories = new RegExp(category, "i");
+    }
+
+    if (startDate) {
+      query.startDate = new RegExp(area, "i");
     }
 
     try {
