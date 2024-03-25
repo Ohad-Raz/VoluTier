@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 import Feed from './pages/Feed/Feed'
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
