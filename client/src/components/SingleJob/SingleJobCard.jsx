@@ -28,7 +28,8 @@ function SingleJobCard() {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.card}>
-        <img src={volunteerJob.imgURL} alt="Volunteer Job" className={styles.image} />
+        <div className={styles.imgContainer}>
+        <img src={volunteerJob.imgURL} alt="Volunteer Job" className={styles.image} /></div>
         <div className={styles.details}>
           <h3 className={styles.title}>{volunteerJob.title}</h3>
           <p className={styles.description}>{volunteerJob.description}</p>
