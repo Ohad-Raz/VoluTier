@@ -79,7 +79,7 @@ const addEmployeeToCompany = async (req, res) => {
         if (!company) {
             return res.status(404).send("company not found");
         }
-        company.employeeList.push(employeeId); // Push the employeeId directly
+        company.employeeList.push(employeeId);
         await company.save();
         res.status(200).send("Employee added to company successfully");
     } catch (err) {
