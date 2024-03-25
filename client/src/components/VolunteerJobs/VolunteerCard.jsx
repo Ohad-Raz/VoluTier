@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './VolunteerCard.module.css'; // Import CSS module for styling
 import { pageBaseUrl } from '../../utils/general';
+import { Link } from 'react-router-dom';
 
 function VolunteerCard() {
   const [volunteerJobs, setVolunteerJobs] = useState([]);
@@ -9,7 +10,7 @@ function VolunteerCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${pageBaseUrl}api/v1/volunteerJobs`);
+        const response = await axios.get(`${pageBaseUrl}volunteerJobs`);
         setVolunteerJobs(response.data);
       } catch (error) {
         console.error('Error fetching volunteer jobs:', error.message);
@@ -23,6 +24,7 @@ function VolunteerCard() {
     <div className={styles.cardContainer}>
       {volunteerJobs.map((volunteerJob, index) => (
         <div key={index} className={styles.card}>
+           <Link to={`/volunteerJobs/${volunteerJob._id}`} className="volunteerJobsLink">
           <img src={volunteerJob.imgURL} alt="Volunteer Job" className={styles.image} />
           <div className={styles.details}>
             <h3 className={styles.title}>{volunteerJob.title}</h3> {/* Title */}
@@ -44,6 +46,8 @@ function VolunteerCard() {
             {/* Created At: Display createdAt if needed */}
             <button className={styles.button}>Apply</button>
           </div>
+          </Link>
+          
         </div>
       ))}
     </div>
