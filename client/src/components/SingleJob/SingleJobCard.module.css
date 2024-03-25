@@ -1,32 +1,36 @@
+body {
+
+  font-family: Arial, sans-serif;
+  /* background-color: #f2f6ff; Light blue background */
+}
+
 .cardContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh; /* Make the container fill the viewport height */
 }
 
 .card {
-  min-width: 50rem;
-  width: 100rem;
-  margin: 20px;
+  width: 90%; /* Take up 90% of the available width */
+  max-width: 50rem; /* Limit maximum width */
+  background-color: #fff; /* White background */
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
 }
 
-.imgContainer{
+.imgContainer {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-
-
+  justify-content: center;
 }
+
 .image {
-  width: 55%;
+  width: 100%;
   height: auto;
-  /* max-height: 200px; */
   object-fit: cover;
   border-bottom: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0; /* Rounded corners only on top */
 }
 
 .details {
@@ -34,16 +38,19 @@
 }
 
 .title {
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* Larger title font size */
   margin-bottom: 1rem;
+  color: #333; /* Dark text color */
 }
 
 .description {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increase spacing */
+  color: #555; /* Slightly darker text color */
 }
 
 .info {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: #777; /* Lighter text color */
 }
 
 .categories {
@@ -57,6 +64,7 @@
   border-radius: 5px;
   margin-right: 0.5rem;
   font-size: 0.875rem;
+  color: #555; /* Slightly darker text color */
 }
 
 .button {
@@ -69,7 +77,7 @@
   font-size: 0.875rem;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Increase spacing */
 }
 
 .button:hover {
