@@ -12,7 +12,7 @@ router.get('/', volunteerJobController.getAll);
 router.get('/:id', volunteerJobController.getById);
 
 // Update a volunteer job by ID
-router.put('/:id', volunteerJobController.updateById);
+router.patch('/:id', volunteerJobController.updateById);
 
 // Delete a volunteer job by ID
 router.delete('/:id', volunteerJobController.deleteById);

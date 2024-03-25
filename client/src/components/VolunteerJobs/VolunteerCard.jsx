@@ -1,41 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './VolunteerCard.module.css'; // Import CSS module for styling
+import { pageBaseUrl } from '../../utils/general';
 
 function VolunteerCard() {
-  // Sample data for the volunteer jobs
-  const volunteerJobs = [
-    {
-      place: "Local Community Center",
-      description: "Helping organize events and activities for children",
-      maxAmount: 10,
-      amount: 5,
-      startDate: "2024-04-01",
-      endDate: "2024-04-30",
-      imgURL: "https://www.ruachtova.org.il/wp-content/uploads/2021/07/shutterstock_1761616103.jpg",
-      categories: ["Children", "Community", "Events"]
-    },
-    {
-      place: "Animal Shelter",
-      description: "Assisting with animal care and adoption events",
-      maxAmount: 8,
-      amount: 3,
-      startDate: "2024-05-15",
-      endDate: "2024-06-15",
-      imgURL: "https://www.ruachtova.org.il/wp-content/uploads/2021/07/shutterstock_1761616103.jpg",
-      categories: ["Animals", "Community"]
-    },
-    // Add one more volunteer job here
-    {
-      place: "Food Bank",
-      description: "Packing and distributing food to those in need",
-      maxAmount: 15,
-      amount: 10,
-      startDate: "2024-04-10",
-      endDate: "2024-05-10",
-      imgURL: "https://www.ruachtova.org.il/wp-content/uploads/2021/07/shutterstock_1761616103.jpg",
-      categories: ["Community", "Food"]
-    }
-  ];
+  const [volunteerJobs, setVolunteerJobs] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${pageBaseUrl}api/v1/volunteerJobs`);
+        setVolunteerJobs(response.data);
+      } catch (error) {
+        console.error('Error fetching volunteer jobs:', error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className={styles.cardContainer}>
@@ -43,17 +25,23 @@ function VolunteerCard() {
         <div key={index} className={styles.card}>
           <img src={volunteerJob.imgURL} alt="Volunteer Job" className={styles.image} />
           <div className={styles.details}>
-            <h3 className={styles.title}>{volunteerJob.place}</h3>
-            <p className={styles.description}>{volunteerJob.description}</p>
-            <p className={styles.info}>Max Amount: {volunteerJob.maxAmount}</p>
-            <p className={styles.info}>Amount: {volunteerJob.amount}</p>
-            <p className={styles.info}>Start Date: {volunteerJob.startDate}</p>
-            <p className={styles.info}>End Date: {volunteerJob.endDate}</p>
+            <h3 className={styles.title}>{volunteerJob.title}</h3> {/* Title */}
+            <p className={styles.description}>{volunteerJob.description}</p> {/* Description */}
+            <p className={styles.info}>Max Amount: {volunteerJob.maxAmount}</p> {/* Max Amount */}
+            <p className={styles.info}>Start Date: {new Date(volunteerJob.startDate).toLocaleDateString()}</p> {/* Start Date */}
+            <p className={styles.info}>End Date: {new Date(volunteerJob.endDate).toLocaleDateString()}</p> {/* End Date */}
+            <p className={styles.info}>Estimated Hours: {volunteerJob.estimatedHours}</p> {/* Estimated Hours */}
+            <p className={styles.info}>Location: {volunteerJob.location}</p> {/* Location */}
+            <p className={styles.info}>Business ID: {volunteerJob.businessId}</p> {/* Business ID */}
+            <p className={styles.info}>Contact Phone: {volunteerJob.contactPhone}</p> {/* Contact Phone */}
+            <p className={styles.info}>XP: {volunteerJob.XP}</p> {/* XP */}
             <div className={styles.categories}>
               {volunteerJob.categories.map((category, index) => (
                 <span key={index} className={styles.category}>{category}</span>
               ))}
             </div>
+            <p className={styles.info}>Status: {volunteerJob.status}</p> {/* Status */}
+            {/* Created At: Display createdAt if needed */}
             <button className={styles.button}>Apply</button>
           </div>
         </div>
