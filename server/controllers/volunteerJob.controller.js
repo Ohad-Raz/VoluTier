@@ -70,20 +70,28 @@ const volunteerJobController = {
     try {
       const { jobId } = req.params;
       const { employeeId } = req.body;
-
+  
       const employeeExists = await Employee.exists({ _id: employeeId });
       if (!employeeExists) {
         return res.status(404).json({ message: "Employee not found" });
       }
+  
       const volunteerJob = await VolunteerJob.findById(jobId);
-      if (volunteerJob.applications.includes(employeeId)) {
-        return res
-          .status(400)
-          .json({ message: "Employee has already applied for this job" });
+      if (!volunteerJob) {
+        return res.status(404).json({ message: "Volunteer job not found" });
       }
-      volunteerJob.applications.push(employeeId);
+  
+      if (volunteerJob.applicants.length >= volunteerJob.maxAmount) {
+        return res.status(400).json({ message: "Maximum number of applicants reached for this job" });
+      }
+  
+      if (volunteerJob.applicants.includes(employeeId)) {
+        return res.status(400).json({ message: "Employee has already applied for this job" });
+      }
+  
+      volunteerJob.applicants.push(employeeId);
       await volunteerJob.save();
-
+  
       res.status(200).json({ message: "Employee applied successfully" });
     } catch (error) {
       res.status(500).json({ message: error.message });
