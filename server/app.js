@@ -10,6 +10,7 @@ app.use(cors());
 
 
 app.use("/api/v1/company",comapnyRoute)
+app.use("/api/v1/employee",employeeRoute)
 
 
 

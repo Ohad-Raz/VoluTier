@@ -2,6 +2,16 @@ const { Employee } = require('../models/employee.model')
 const bcrypt = require("bcryptjs")
 const { generateToken } = require('../utils/jwt')
 
+const getEmployees = async (req, res) => {
+    try {
+        const query =  req.query
+        const employee = await Employee.find({...query})
+        res.send(employee)
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
 const Register = async (req, res) => {
     try {
         const body = req.body;
@@ -35,5 +45,31 @@ const Login = async (req, res) =>{
     }
 }
 
+const updateEmployee = async (req, res) => {
+    try {
+        const { employeeId } = req.params;
+        const updatedEmployee = await Employee.findByIdAndUpdate(employeeId, req.body, { new: true });
+        if (!updatedEmployee) {
+            return res.status(404).json({ message: 'Employee not found' });
+        }
+        res.status(200).json(updatedEmployee);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
 
-module.exports = {Register, Login};
+const deleteEmployee = async (req, res) => {
+    try {
+        const { employeeId } = req.params;
+        const deletedEmployee = await Employee.findByIdAndDelete(employeeId);
+        if (!deletedEmployee) {
+            return res.status(404).json({ message: 'Employee not found' });
+        }
+        res.status(200).json({ message: 'Employee deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
+
+module.exports = {Register, Login, getEmployees, deleteEmployee, updateEmployee};

@@ -5,7 +5,7 @@ const companySchema = new mongoose.Schema(
         id: {type: String},
         email:{type: String, required:true},
         password:{type: String, required:true},
-        companyName:{type: String},
+        companyName:{type: String, required:true},
         about:{type: String},
         totalVolunteer:{type: String , default: 0},
         employeeList: [{type: mongoose.Types.ObjectId, ref: "Employee" }],
