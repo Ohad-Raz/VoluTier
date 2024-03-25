@@ -4,12 +4,15 @@ const { Employee } = require("../models/employee.model");
 const volunteerJobController = {
 
   create: async (req, res) => {
-    try {
-      const newVolunteerJob = await VolunteerJob.create(req.body);
-      res.status(201).json(newVolunteerJob);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
+    const body = req.body
+    try{
+        body.businessId = req.business.id
+        const newJob = new VolunteerJob(body)
+        newJob.Id = newJob._id
+        await newJob.save()
+        res.send(body)
     }
+    catch{res.status(400).send("Cant create Job")}
   },
 
   getAll: async (req, res) => {
