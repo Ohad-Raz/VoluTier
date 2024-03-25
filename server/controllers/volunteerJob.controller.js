@@ -2,6 +2,7 @@ const VolunteerJob = require("../models/volunteerJob.model");
 const { Employee } = require("../models/employee.model");
 
 const volunteerJobController = {
+
   create: async (req, res) => {
     try {
       const newVolunteerJob = await VolunteerJob.create(req.body);
@@ -147,6 +148,7 @@ const volunteerJobController = {
           // Update job status to "active"
           job.status = "active";
           await job.save();
+
         }
       }
     } catch (error) {
