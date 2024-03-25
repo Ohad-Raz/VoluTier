@@ -1,6 +1,7 @@
 const { Employee } = require('../models/employee.model')
 const bcrypt = require("bcryptjs")
-const { generateToken } = require('../utils/jwt')
+const { generateToken } = require('../utils/jwt');
+const { Company } = require('../models/company.model');
 
 const getEmployees = async (req, res) => {
     try {
@@ -15,10 +16,20 @@ const getEmployees = async (req, res) => {
 const getEmployee =  async(req,res)=>{
     try{
         const {role}=req.employee
-        const link = await Employee.findById(req.employee.id)
-        res.send({
-            link:{...link._doc,role}
-        })
+        if(role=="employee"){
+            const link = await Employee.findById(req.employee.id)
+            res.send({
+                link:{...link._doc,role}
+            })
+        }else if(role=="company"){
+            const link = await Company.findById(req.employee.id)
+            res.send({
+                link:{...link._doc,role}
+            })
+        }else{
+            res.status(400).send("cannot find")
+        }
+        
     }
     catch(err){
         res.status(400).send("cannot find")
@@ -84,5 +95,38 @@ const deleteEmployee = async (req, res) => {
     }
 };
 
+const updateLevelIfRequired = async (req, res) => {
+    try {
+        const employeeId = req.params.employeeId; 
 
-module.exports = {Register, Login, getEmployees, deleteEmployee, updateEmployee, getEmployee};
+        const employee = await Employee.findById(employeeId);
+        if (!employee) {
+            return res.status(404).json({ error: 'Employee not found' });
+        }
+
+        const xpThresholds = [15, 40, 70, 110, 160, 230, 320, 450, 620, 850];
+
+        let newLevel = 1;
+        for (let i = 0; i < xpThresholds.length; i++) {
+            if (employee.currentXP >= xpThresholds[i]) {
+                newLevel = i + 2;
+            } else {
+                break; 
+            }
+        }
+        if (newLevel > employee.Level) {
+            employee.Level = newLevel;
+            await employee.save();
+            return res.status(200).json({ message: `Employee level updated to level ${newLevel}` });
+        } else {
+            return res.status(200).json({ message: `Employee currentXP is ${employee.currentXP}, no level update required` });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+
+module.exports = {Register, Login, getEmployees, deleteEmployee, updateEmployee, getEmployee, updateLevelIfRequired};
