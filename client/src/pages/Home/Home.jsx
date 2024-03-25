@@ -15,7 +15,15 @@ function Home() {
   const getVulenteerbyFilter = async () => {
     console.log(formData);
     try {
-    } catch (error) {}
+      const res = await axios.post(`${pageBaseUrl}volunteerJobs/getVolunteerByFilter`, {
+        area: formData.area,
+        category: formData.category,
+      });
+      const data = res.data;
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -39,7 +47,7 @@ function Home() {
               <option value="east">East</option>
               <option value="south">South</option>
             </select>
-            <select name="subject" id="" onChange={changeHandler}>
+            <select name="category" id="" onChange={changeHandler}>
               <option value="">{"Who would you like to help?(All)"}</option>
               <option value="Environment">Environment</option>
               <option value="at risk youth">at risk youth</option>
@@ -50,7 +58,7 @@ function Home() {
               <option value="software">software</option>
             </select>
           </div>
-          <button>Serch</button>
+          <button onClick={getVulenteerbyFilter}>Serch</button>
         </div>
 
         <div className={styles.containerThree}>
