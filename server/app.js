@@ -4,7 +4,6 @@ const employeeRoute = require('./routes/employee.routes')
 const comapnyRoute = require('./routes/company.routes')
 const leaderRoute=require("./routes/leaderboard.routes")
 const volunteerJobRoute=require('./routes/volunteerJob.routes')
-
 const businessRoute = require('./routes/business.routes')
 
 
