@@ -13,6 +13,19 @@ const getCompanies = async (req, res) => {
     }
 };
 
+const getCompany =  async(req,res)=>{
+    try{
+        const {role}=req.company
+        const link = await Company.findById(req.company.id)
+        res.send({
+            link:{...link._doc,role}
+        })
+    }
+    catch(err){
+        res.status(400).send("cannot find")
+    }
+}
+
 const Register = async (req, res) => {
     try {
         const body = req.body;
@@ -88,4 +101,4 @@ const addEmployeeToCompany = async (req, res) => {
     }
 };
 
-module.exports = {Register, Login, getCompanies, deleteCompany, updateCompany, addEmployeeToCompany};
+module.exports = {Register, Login, getCompanies, deleteCompany, updateCompany, addEmployeeToCompany, getCompany};

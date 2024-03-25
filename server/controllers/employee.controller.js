@@ -14,8 +14,11 @@ const getEmployees = async (req, res) => {
 
 const getEmployee =  async(req,res)=>{
     try{
-        const link = await User.findById(req.employee.id)
-        res.send(link)
+        const {role}=req.employee
+        const link = await Employee.findById(req.employee.id)
+        res.send({
+            link:{...link._doc,role}
+        })
     }
     catch(err){
         res.status(400).send("cannot find")
