@@ -11,14 +11,6 @@ const verifyToken = (token) =>{
     return payload;
 };
 
-const decodeToken = (token) => {
-    try {
-      const decoded = jwt.verify(token, jwtSecret);
-      return decoded;
-    } catch (error) {
-      console.error('Error decoding token:', error);
-      return null;
-    }
-  };
 
-module.exports = { generateToken, verifyToken, decodeToken }
+
+module.exports = { generateToken, verifyToken }

@@ -1,39 +1,26 @@
-const { Employee } = require('../models/employee.model')
+const { Business } = require('../models/business.model')
 const bcrypt = require("bcryptjs")
 const { generateToken } = require('../utils/jwt')
 
-const getEmployees = async (req, res) => {
+const getBusinesses = async (req, res) => {
     try {
         const query =  req.query
-        const employee = await Employee.find({...query})
-        res.send(employee)
+        const business = await Business.find({...query})
+        res.send(business)
     } catch (error) {
         res.status(500).json({ message: 'Server Error' });
     }
 };
-
-const getEmployee =  async(req,res)=>{
-    try{
-        const {role}=req.employee
-        const link = await Employee.findById(req.employee.id)
-        res.send({
-            link:{...link._doc,role}
-        })
-    }
-    catch(err){
-        res.status(400).send("cannot find")
-    }
-}
 
 const Register = async (req, res) => {
     try {
         const body = req.body;
         const hash = await bcrypt.hash(body.password, 10);
         body.password = hash;
-        const employee = new Employee(body);
-        employee.id = employee._id;
-        await employee.save();
-        res.status(200).send(employee);
+        const business = new Business(body);
+        business.id = business._id;
+        await business.save();
+        res.status(200).send(business);
     } catch (err) {
         res.status(400).send("Error");
     }
@@ -42,12 +29,12 @@ const Register = async (req, res) => {
 const Login = async (req, res) =>{
     const {email, password} = req.body;
     try{
-        const employee = await Employee.findOne({email})
-        if(employee){
-        const isMatch = await bcrypt.compare(password, employee.password)
+        const business = await Business.findOne({email})
+        if(business){
+        const isMatch = await bcrypt.compare(password, business.password)
         if(isMatch){
-            const token = generateToken({id: employee._id ,email: employee.email, role: "employee"})
-        return res.send({employee, token});
+            const token = generateToken({id: business._id ,email: business.email, role: "business"})
+        return res.send({business, token});
     } 
     return res.status(401).send("Email or password are incorrect");
     };
@@ -85,4 +72,4 @@ const deleteEmployee = async (req, res) => {
 };
 
 
-module.exports = {Register, Login, getEmployees, deleteEmployee, updateEmployee, getEmployee};
+module.exports = {Register, Login, getBusinesses, deleteEmployee, updateEmployee};
