@@ -14,12 +14,7 @@ const volunteerJobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-  area: {
-    type: String,
-    required: true,
-  },
-
+  
   description: {
     type: String,
     required: true,
@@ -30,7 +25,7 @@ const volunteerJobSchema = new mongoose.Schema({
     required: true,
   },
 
-  applications: [
+  applicants: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -54,10 +49,6 @@ const volunteerJobSchema = new mongoose.Schema({
   },
   categories: {
     type: [String],
-    required: true,
-  },
-  XP: {
-    type: Number,
     required: true,
   },
   contactPhone: {
