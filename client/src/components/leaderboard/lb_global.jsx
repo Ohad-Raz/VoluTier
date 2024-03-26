@@ -51,7 +51,7 @@ function Lb_global() {
   
     return (
         <TableContainer  component={Paper} sx={{border:'solid'}}>
-            <h1 style={{textAlign:'center'}}>Global Company Rank</h1>
+            <h1 style={{textAlign:'center',  background:'cyan'}}>Global Company Rank</h1>
       <Table sx={{ minWidth: 350 }} aria-label="simple table">
         <TableHead sx={{backgroundColor:'darkcyan',color:'whitesmoke'}}>
           <TableCell sx={{flexGrow:1 ,color:'inherit' }}>rank</TableCell>

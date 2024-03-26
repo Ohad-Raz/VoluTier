@@ -54,7 +54,7 @@ function Lb_companyVol({companyID}) {
   
     return (
         <TableContainer component={Paper} sx={{border:'solid'}}>
-              <h1 style={{textAlign:'center'}}>Volunteer Leaderboard: {globalBoard.companyName}  </h1>
+              <h1 style={{textAlign:'center',  background:'cyan'}}>Volunteer Leaderboard: {globalBoard.companyName}  </h1>
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
         <TableHead sx={{backgroundColor:'darkcyan',color:'whitesmoke'}}>
           

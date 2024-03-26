@@ -24,7 +24,7 @@ function LeaderBoard() {
                 <Lb_companyVol companyID={role=='company'?UserID:UserObj.company.id}/>
 
             </>:
-            <h1>login to show more</h1>
+            <h1 style={{textAlign:'center',backgroundColor:'red',color:'white'}}>login to show more</h1>
         }
       
     </div>)

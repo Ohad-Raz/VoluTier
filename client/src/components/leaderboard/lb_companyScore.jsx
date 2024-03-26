@@ -54,7 +54,7 @@ function Lb_companyScore({companyID}) {
   
     return (
         <TableContainer component={Paper} sx={{border:'solid'}}>
-              <h1 style={{textAlign:'center'}}>Score Leaderboard: {globalBoard.companyName}  </h1>
+              <h1 style={{textAlign:'center',  background:'cyan'}}>Score Leaderboard: {globalBoard.companyName}  </h1>
       <Table sx={{ minWidth: 450 }} aria-label="simple table">
         <TableHead sx={{backgroundColor:'darkcyan',color:'whitesmoke'}}>
 
