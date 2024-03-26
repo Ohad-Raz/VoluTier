@@ -19,6 +19,7 @@ export default function Login() {
     const selectOptions = [
         { value: 'employee', label: 'Employee' },
         { value: 'company', label: 'Company' },
+        { value: 'business', label: 'Business' },
         // { value: 'Volunteer', label: 'Volunteer Place' },
     ];
     const [SelectOpt, SetSelectOpt] = useState(selectOptions[0])
