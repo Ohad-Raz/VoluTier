@@ -38,6 +38,8 @@ function SingleJobCard() {
           <p className={styles.info}>Start Date: {new Date(volunteerJob.startDate).toLocaleDateString()}</p>
           <p className={styles.info}>End Date: {new Date(volunteerJob.endDate).toLocaleDateString()}</p>
           <p className={styles.info}>Estimated Hours: {volunteerJob.estimatedHours}</p>
+          <p className={styles.info}>Area: {volunteerJob.area}</p>
+          <p className={styles.info}>City: {volunteerJob.city}</p>
           <p className={styles.info}>Location: {volunteerJob.location}</p>
           <p className={styles.info}>Business Name: {volunteerJob.businessId?.name}</p>
           <p className={styles.info}>Contact Phone: {volunteerJob.contactPhone}</p>

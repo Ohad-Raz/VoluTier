@@ -5,7 +5,7 @@ import styles from "./Feed.module.css"
 function Feed() {
   return (
     <div className={styles.feedContainer}>
-    <div>Feed</div>
+    {/* <div>Feed</div> */}
     <div className={styles.cardsContainer}><VolunteerCard/></div>
 </div>
 

@@ -5,7 +5,7 @@ function SingleJob() {
   return (
 
     <div>
-    <div>SingleJob</div>
+    {/* <div>SingleJob</div> */}
     <div className={styles.container}><SingleJobCard/></div>
     </div>
   )

@@ -43,8 +43,7 @@ function Home() {
           <select name="area" onChange={changeHandler}>
             <option value="">The volunteer area</option>
             <option value="north">North</option>
-            <option value="west">West</option>
-            <option value="east">East</option>
+            <option value="center">Center</option>
             <option value="south">South</option>
           </select>
           <select name="category" onChange={changeHandler}>
