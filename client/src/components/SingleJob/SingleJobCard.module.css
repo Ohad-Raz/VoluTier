@@ -78,8 +78,36 @@ body {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 1.5rem; /* Increase spacing */
+  width: 75%;
 }
 
 .button:hover {
+  background-color: #0056b3;
+}
+/* SingleJobCard.module.css */
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input,
+.form textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form button:hover {
   background-color: #0056b3;
 }

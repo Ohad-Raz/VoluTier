@@ -10,11 +10,11 @@ router.get('/', volunteerJobController.getAll);
 router.get('/:id', volunteerJobController.getById);
 
 router.patch('/:id', volunteerJobController.updateById);
-router.patch('/:jobId/complete', volunteerJobController.updateJobStatusAndAwardXP);
+router.patch('/complete/:jobId', volunteerJobController.updateJobStatusAndAwardXP);
 
 router.delete('/:id', volunteerJobController.deleteById);
 
-router.post('/:jobId/apply', volunteerJobController.apply);
+router.post('/apply/:jobId', volunteerJobController.apply);
 router.post('/getVolunteerByFilter', volunteerJobController.getVolunteerByFilter);
 
 
