@@ -8,9 +8,9 @@ import Lb_companyVol from '../../components/leaderboard/lb_companyVol'
 function LeaderBoard() {
 
     return(<div>
-        {/* <Lb_global/>
-        <Lb_EmpGlobal/> */}
-        {/* <Lb_companyScore companyID={'66014a99cfa48558b53fa59b'}/> */}
+        <Lb_global/>
+        <Lb_EmpGlobal/>
+        <Lb_companyScore companyID={'66014a99cfa48558b53fa59b'}/>
         <Lb_companyVol companyID={'66014a99cfa48558b53fa59b'}/>
 
     </div>)

@@ -11,7 +11,9 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLock } from '@fortawesome/free-solid-svg-icons'
 
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -41,7 +43,6 @@ export default function Login() {
     };
 
 
-
     return (
      
         <ThemeProvider theme={createTheme()}>
@@ -56,7 +57,7 @@ export default function Login() {
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
+                        <FontAwesomeIcon icon={faLock} />
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Sign in
