@@ -48,7 +48,7 @@ const Login = async (req, res) =>{
         const isMatch = await bcrypt.compare(password, company.password)
         if(isMatch){
             const token = generateToken({id: company._id ,email: company.email, role: "company"})
-        return res.send({company, token});
+        return res.send({company:{...company,role:'company'}, token});
     } 
     return res.status(401).send("Email or password are incorrect");
     };
