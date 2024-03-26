@@ -113,7 +113,7 @@ export default function Navbar(props) {
                 <FontAwesomeIcon icon={props.isDark?faSun:faMoon}/>
               </IconButton>
               <Box sx={{display:"flex"}} onClick={UserID?handleUserMenuOpen:() => handleNavigate("/auth")}>
-                {UserID?<p>{UserObj.fullname}</p>:<Button
+                {UserID?<p>{UserObj.username}</p>:<Button
                   variant="contained"
                   color="success"
                   onClick={() => handleNavigate("/auth")}
@@ -148,7 +148,7 @@ export default function Navbar(props) {
                 horizontal: "left",
               }}
             >
-              <MenuItem>Profile</MenuItem>
+              <MenuItem onClick={() => handleNavigate("/profile")}>Profile</MenuItem>
               <MenuItem onClick={logOut} sx={{display:"flex",columnGap:"1vw",alignItems:'center'}} ><span>Log Out</span> <FontAwesomeIcon icon={faRightFromBracket} />  </MenuItem>
             </Menu>
 

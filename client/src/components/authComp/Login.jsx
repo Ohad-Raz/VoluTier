@@ -32,22 +32,18 @@ export default function Login() {
     const selectOptions = [
         { value: 'employee', label: 'Employee' },
         { value: 'company', label: 'Company' },
+        { value: 'business', label: 'Business' },
+        // { value: 'Volunteer', label: 'Volunteer Place' },
     ];
     const [SelectOpt, SetSelectOpt] = useState(selectOptions[0]);
     const handleSelectChange = (selectOptions) => {
         SetSelectOpt(selectOptions);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+
 
     return (
+     
         <ThemeProvider theme={createTheme()}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
@@ -65,14 +61,8 @@ export default function Login() {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <Select
-                            value={SelectOpt}
-                            name='select'
-                            onChange={handleSelectChange}
-                            options={selectOptions}
-                            placeholder="Select an option"
-                        />
+                    <Box component="form" onSubmit={sendFormObj} noValidate sx={{ mt: 1 }}>
+                   
                         <TextField
                             margin="normal"
                             required
@@ -93,10 +83,20 @@ export default function Login() {
                             id="password"
                             autoComplete="current-password"
                         />
+                        
+                       
+                             <Select
+                            value={SelectOpt}
+                            name='select'
+                            onChange={handleSelectChange}
+                            options={selectOptions}
+                            placeholder="Select an option"
+                        />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         />
+                        
                         <Button
                             type="submit"
                             fullWidth

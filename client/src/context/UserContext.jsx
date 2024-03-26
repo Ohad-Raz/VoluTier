@@ -45,22 +45,21 @@ export default function UserManager({children}) {
 
     const getUser=async ()=>{
       try {
-        const response= await fetch(`${pageBaseUrl}users/login`,optionsWithToken(getOptions,UserToken))
+        const response= await fetch(`${pageBaseUrl}employee/db`,optionsWithToken(getOptions,UserToken))
         const data=await response.json()
         if(data.message)console.log(data.message)
-        if(data.user)setUserObj({...data.user,id:data.user._id});
+        if(data.link)setUserObj({...data.link});
       } catch (error) {
         console.log(error)
       }
     }
     
-    // const logOut=()=>{
-    //     signOut(auth).then(() => {
-    //       setUserObj({email:'',id:'',error:''})
-    //     }).catch((error) => {
-    //       console.log(error)
-    //     })
-    // };
+    const logOut=()=>{
+      
+      setUserToken('')
+      setUserObj({})
+      localStorage.removeItem('volun_token')
+    };
 
     const[UserObj,setUserObj]=useState({id:''})
     const [UserToken,setUserToken]=useState('')
@@ -85,7 +84,7 @@ export default function UserManager({children}) {
     },[UserToken,UserObj])
 
 
-    const val={SignUpFunc,LoginFunc,UserObj,UserToken,UserID:UserObj.id,setUserObj}
+    const val={SignUpFunc,LoginFunc,UserObj,UserToken,UserID:UserObj.id,setUserObj,logOut}
 
   
     return (

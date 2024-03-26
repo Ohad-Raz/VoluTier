@@ -11,7 +11,7 @@ function AuthPage() {
   const nav=useNavigate()
   
 
-  // useEffect(()=>{if(UserID){nav('/profile')}},[UserID])
+  useEffect(()=>{if(UserID){nav('/')}},[UserID])
   return (
     <div id='registerPage'>
       <Login/>

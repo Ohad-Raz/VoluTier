@@ -1,0 +1,61 @@
+import React from "react";
+import { Fade } from "react-slideshow-image";
+import styles from "./Slider.module.css";
+
+function Slider() {
+  const slideImage = [
+    {
+      url: "https://www.ngpvan.com/wp-content/uploads/2023/04/1200x628.bloghead.photo_.png",
+      caption: "First Slide",
+    },
+    {
+      url: "https://www.qs.com/wp-content/uploads/2020/01/volunteering.jpg",
+      caption: "Second Slide",
+    },
+    {
+      url: "https://cdn.aarp.net/content/dam/aarp/volunteer/2022/1140x655-create-the-good-volunteer.jpg",
+      caption: "First Slide",
+    },
+    {
+      url: "https://www.mayoclinichealthsystem.org/-/media/national-files/images/hometown-health/2023/volunteers-picking-up-trash.jpg?sc_lang=en&la=en&h=370&w=660&hash=4C702A2CDE24FFCF508F986BEFF97F98",
+      caption: "Third Slide",
+    },
+    {
+      url: "https://taking.care/cdn/shop/articles/blog-hero-elderly-volunteering.jpg?v=1679567010",
+      caption: "Fourth Slide",
+    },
+    {
+      url: "https://do512family.com/wp-content/uploads/2022/07/zGf-nwoK-1440x780.png",
+      caption: "Fifth slide",
+    },
+  ];
+
+  const divStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundSize: "cover",
+  };
+
+  const spanStyle = {
+    fontSize: "20px",
+    background: "#efefef",
+    color: "#000",
+  };
+
+  return (
+    <div className={styles.slideContainer}>
+      <Fade>
+        {slideImage.map((image, index) => (
+          <div key={index}>
+            <div style={{ ...divStyle, backgroundImage: `url(${image.url})` }}>
+              <span style={{spanStyle}}>{image.caption}</span>
+            </div>
+          </div>
+        ))}
+      </Fade>
+    </div>
+  );
+}
+
+export default Slider;

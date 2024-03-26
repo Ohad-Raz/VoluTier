@@ -63,9 +63,9 @@ const deleteBusiness = async (req, res) => {
         const { businessId } = req.params;
         const deletedBusiness = await Business.findByIdAndDelete(businessId);
         if (!deletedBusiness) {
-            return res.status(404).json({ message: 'Employee not found' });
+            return res.status(404).json({ message: 'Business not found' });
         }
-        res.status(200).json({ message: 'Employee deleted successfully' });
+        res.status(200).json({ message: 'Business deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Server Error' });
     }
