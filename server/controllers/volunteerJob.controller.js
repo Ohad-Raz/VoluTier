@@ -1,6 +1,7 @@
 const VolunteerJob = require("../models/volunteerJob.model");
 const { Employee } = require("../models/employee.model");
 
+
 const volunteerJobController = {
 
   create: async (req, res) => {
@@ -27,10 +28,6 @@ const volunteerJobController = {
   getById: async (req, res) => {
     try {
       const volunteerJob = await VolunteerJob.findById(req.params.id).populate("businessId")
-      // .populate({
-      //   path: "applicants",
-      //   model: "Employee" // Specify the model name for the reference
-      // });;
       if (!volunteerJob) {
         res.status(404).json({ message: "Volunteer job not found" });
       } else {
@@ -138,7 +135,6 @@ const volunteerJobController = {
   updateJobStatusToActive: async () => {
     try {
       const upcomingJobs = await VolunteerJob.find({ status: "upcoming" });
-
       const today = new Date();
       const sixAM = new Date(today);
 
