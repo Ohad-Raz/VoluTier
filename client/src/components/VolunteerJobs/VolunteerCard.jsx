@@ -44,7 +44,7 @@ function VolunteerCard() {
             <hr></hr>   <br></br>
             <p className={styles.info}>Status: {volunteerJob.status}</p> {/* Status */}
             {/* Created At: Display createdAt if needed */}
-            <button className={styles.button}>Apply</button>
+            <button className={styles.button}>More information</button>
           </div>
           </Link>
           

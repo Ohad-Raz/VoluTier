@@ -16,6 +16,10 @@ const volunteerJobSchema = new mongoose.Schema({
     type:String,
     required: true
   },
+  city: {
+    type: String,
+    required: true,
+  },
   location: {
     type: String,
     required: true,

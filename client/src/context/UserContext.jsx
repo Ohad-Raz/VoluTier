@@ -30,6 +30,7 @@ export default function UserManager({children}) {
       try {
         const response= await fetch(`${pageBaseUrl}${loginObj.select}/login`,{...postOptions,body:JSON.stringify(loginObj)})
         const data=await response.json()
+        console.log("login",data);
         if(data.message){
           return data.message
         }
