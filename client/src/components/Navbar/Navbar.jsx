@@ -69,7 +69,7 @@ export default function Navbar(props) {
 
     return (
       <Box sx={{ flexGrow: 1 ,position:'sticky',top:0 ,zIndex:1000, width:"100%"}}>
-        <AppBar pall color="primary" position="static">
+        <AppBar sx={{backgroundColor:'#145591',color:'whitesmoke'}} pall color="inherit" position="static">
           <Toolbar>
             <IconButton
               size="large"
@@ -110,7 +110,7 @@ export default function Navbar(props) {
   
   
             
-              <Box sx={{display:"flex"}} onClick={UserID?handleUserMenuOpen:() => handleNavigate("/auth")}>
+              <Box sx={{display:"flex",alignItems:'center' }} onClick={UserID?handleUserMenuOpen:() => handleNavigate("/auth")}>
                 {UserID?<p>{UserObj.username}</p>:<Button
                   variant="contained"
                   color="success"
