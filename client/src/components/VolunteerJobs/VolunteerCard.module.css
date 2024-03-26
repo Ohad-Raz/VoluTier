@@ -6,6 +6,7 @@
 
 .cardContainer a {
   text-decoration: none;
+
 }
 
 .card {
@@ -14,21 +15,24 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
-  background: linear-gradient(to bottom right, #b2d7ff, #f0f8ff); /* Light blue gradient background */
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition on hover */
+  background: linear-gradient(to bottom right, #bed7f2, #f0f8ff); /* Light blue gradient background */
+  transition: background-color 1s, transform 0.5s; /* Smooth transition on hover */
+  min-width: 23rem;
+  max-width: 23rem;
 }
 
 .card:hover {
-  background: linear-gradient(to bottom right, #86b9f7, #d2e4f8); /* Light blue gradient background on hover */
-  transform: translateY(-5px); /* Move card up slightly on hover */
+  background: linear-gradient(to bottom right, #9fc6f4, #d2e4f8); 
+  transform: translateY(-5px); 
 }
 
 .image {
-  width: 100%;
+  display: block;
   height: auto;
-  max-height: 200px; /* Limit image height */
+  max-height: 15rem;
+  width: 100%;
   object-fit: cover;
-  border-bottom: 1px solid #ccc; /* Add border between image and details */
+  border-bottom: 1px solid #ccc;
 }
 
 .details {

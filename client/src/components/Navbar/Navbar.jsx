@@ -17,6 +17,8 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMoon, faRightFromBracket, faSun, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from "../../context/UserContext";
+import Logo from "./LogoVoluntier.png"
+import styles from "./Navbar.module.css"
 
 
 
@@ -57,10 +59,10 @@ export default function Navbar(props) {
   
 
     const menuItems=[
+      <MenuItem onClick={() => handleNavigate("/")}><img className={styles.logo} src={Logo}/></MenuItem>,
         <MenuItem onClick={() => handleNavigate("/")}>Home</MenuItem>,
         <MenuItem onClick={() => handleNavigate("/Feed")}>Feed</MenuItem>,
-        <MenuItem onClick={() => handleNavigate("/Company")}>Company</MenuItem>,
-        <MenuItem onClick={() => handleNavigate("/leaderboard")}>Leader Board</MenuItem>,
+        <MenuItem onClick={() => handleNavigate("/leaderboard")}>Leaderboard</MenuItem>,
         
     ]
 
@@ -69,7 +71,13 @@ export default function Navbar(props) {
 
     return (
       <Box sx={{ flexGrow: 1 ,position:'sticky',top:0 ,zIndex:1000, width:"100%"}}>
-        <AppBar sx={{backgroundColor:'#145591',color:'whitesmoke'}} pall color="inherit" position="static">
+       <AppBar
+  sx={{
+    background: "linear-gradient(to right, #145591, #2980b9)", // Gradient background
+    color: "whitesmoke",
+  }}
+  position="static"
+>
           <Toolbar>
             <IconButton
               size="large"
@@ -110,27 +118,30 @@ export default function Navbar(props) {
   
   
             
-              <Box sx={{display:"flex",alignItems:'center' }} onClick={UserID?handleUserMenuOpen:() => handleNavigate("/auth")}>
-                {UserID?<p>{UserObj.username}</p>:<Button
-                  variant="contained"
-                  color="success"
-                  onClick={() => handleNavigate("/auth")}
-                  >
-                    {"Login"}
-                  </Button>
-                }
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                  color="inherit"
-                  
-                >
-                  
-                  <FontAwesomeIcon icon={faUserCircle}/>
-
-                </IconButton>
-              </Box>
+            <Box sx={{ display: "flex", alignItems: "center" }} onClick={UserID ? handleUserMenuOpen : () => handleNavigate("/auth")}>
+  {UserID ? (
+    <p style={{ color: "#333" }}>{UserObj.username}</p>
+  ) : (
+    <Button
+      variant="contained"
+      sx={{
+        color: "#333",
+        backgroundColor: "#F0E68C", // Light gold
+        backgroundImage: "linear-gradient(to bottom, #F0E68C, #E0E0E0)", // Gradient
+        "&:hover": {
+          backgroundColor: "#E0E0E0", // Darker gold on hover
+          backgroundImage: "linear-gradient(to bottom, #E0E0E0, #B0E0E6)" // Light blue gradient on hover
+        }
+      }}
+      onClick={() => handleNavigate("/auth")}
+    >
+      {"Login"}
+    </Button>
+  )}
+  <IconButton size="large" edge="end" aria-label="account of current user" color="inherit">
+    <FontAwesomeIcon icon={faUserCircle} />
+  </IconButton>
+</Box>
               <Menu
               id="menu-appbar"
               anchorEl={userAnchor}
