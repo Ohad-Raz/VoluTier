@@ -69,12 +69,6 @@ function Feed() {
             placeholder="City"
             onChange={changeHandler}
           />
-          <input
-            type="text"
-            name="amount"
-            placeholder="Amount of volunteers"
-            onChange={changeHandler}
-          />
         </div>
         <button className={styles.searchBtn} onClick={getVolunteerByFilter}>
           Search
@@ -83,7 +77,7 @@ function Feed() {
       <div className={styles.cardsContainer}>
         <VolunteerCard
           volunteerJobs={volunteerJobs}
-          location={location.state.volunteerData}
+          location={location.state?.volunteerData}
         />
       </div>
     </div>

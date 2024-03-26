@@ -20,8 +20,6 @@ function VolunteerCard(props) {
       }
     };
 
-    console.log(location);
-
     fetchData();
   }, []);
 
