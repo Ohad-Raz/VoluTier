@@ -8,13 +8,25 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { TablePagination } from '@mui/material';
 
 
 
 function Lb_companyScore({companyID}) {
+  
 
 
     const [globalBoard, setglobalBoard] = useState({companyName:"",employeeList:[]})
+    const [page, pagechange] = useState(0);
+    const [rowperpage, rowperpagechange] = useState(5);
+
+    const handlechangepage = (event, newpage) => {
+      pagechange(newpage)
+    }
+    const handleRowsPerPage = (event) => {
+        rowperpagechange(+event.target.value)
+        pagechange(0);
+    }
 
     useEffect(()=>{
         const globalBoardFetch=async()=>{
@@ -41,35 +53,48 @@ function Lb_companyScore({companyID}) {
   
   
     return (
-        <TableContainer component={Paper}>
-              <h1 style={{textAlign:'center'}}>Score Leaderboard: {globalBoard.companyName}  </h1>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Rank</TableCell>
-            <TableCell align="right">Level</TableCell>
-            <TableCell align="right">profession</TableCell>
-            <TableCell align="right">user</TableCell>
-            <TableCell align="right">XP</TableCell>
-          </TableRow>
+        <TableContainer component={Paper} sx={{border:'solid'}}>
+              <h1 style={{textAlign:'center',  background:'cyan'}}>Score Leaderboard: {globalBoard.companyName}  </h1>
+      <Table sx={{ minWidth: 450 }} aria-label="simple table">
+        <TableHead sx={{backgroundColor:'darkcyan',color:'whitesmoke'}}>
+
+            <TableCell sx={{flexGrow:1 ,color:'inherit'}}>Rank</TableCell>
+            <TableCell sx={{flexGrow:1,color:'inherit'}}>Level</TableCell>
+            <TableCell sx={{flexGrow:1,color:'inherit'}}>profession</TableCell>
+            <TableCell sx={{flexGrow:1,color:'inherit'}}>user</TableCell>
+            <TableCell sx={{flexGrow:1,color:'inherit'}}>XP</TableCell>
+  
         </TableHead>
         <TableBody>
-          {globalBoard.employeeList.map((row,ind) => (
+          {globalBoard.employeeList
+          .slice(page*rowperpage,page*rowperpage+rowperpage)
+          .map((row,ind) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell>
+              <TableCell sx={{flexGrow:1}}>
                 {ind+1}.
               </TableCell>
-              <TableCell align="right">{row.Level}</TableCell>
-              <TableCell align="right">{row.profession}</TableCell>
-              <TableCell align="right">{row.username}</TableCell>
-              <TableCell align="right">{row.currentXP}</TableCell>
+              <TableCell sx={{flexGrow:1}}>{row.Level}</TableCell>
+              <TableCell sx={{flexGrow:1}}>{row.profession}</TableCell>
+              <TableCell sx={{flexGrow:1}}>{row.username}</TableCell>
+              <TableCell sx={{flexGrow:1}}>{row.currentXP}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <TablePagination  
+        rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPage={rowperpage}
+          page={page}
+          count={globalBoard.employeeList.length}
+          component="div"
+          sx={{backgroundColor:'darkgray'}}
+          onPageChange={handlechangepage}
+          onRowsPerPageChange={handleRowsPerPage}
+      />
+
     </TableContainer>
     )
 }
