@@ -32,7 +32,6 @@ function VolunteerCard() {
             <p className={styles.info}>Max Amount: {volunteerJob.maxAmount}</p> {/* Max Amount */}
             <p className={styles.info}>Start Date: {new Date(volunteerJob.startDate).toLocaleDateString()}</p> {/* Start Date */}
             <p className={styles.info}>End Date: {new Date(volunteerJob.endDate).toLocaleDateString()}</p> {/* End Date */}
-          
             <p className={styles.info}>Location: {volunteerJob.location}</p> {/* Location */}
   
           
