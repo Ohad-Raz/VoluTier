@@ -5,8 +5,8 @@ const getEmployeeScores=async(req,res)=>{
     try {
         const {companyID}=req.params
         const leaderBoard=await Company.findById(companyID)
-        .select('employeeList companyName')
-        .populate({path:'employeeList',select:'id currentXP username' })
+        .select('employeeList  companyName')
+        .populate({path:'employeeList',select:'id currentXP username profession Level' })
 
         leaderBoard.employeeList.sort((a,b)=>{
             return b.currentXP-a.currentXP
@@ -25,7 +25,7 @@ const getEmployeeVol=async(req,res)=>{
         const {companyID}=req.params
         const leaderBoard=await Company.findById(companyID)
         .select('employeeList companyName')
-        .populate({path:'employeeList',select:'id totalVolunteer username' })
+        .populate({path:'employeeList',select:'id totalVolunteer username level profession' })
 
         leaderBoard.employeeList.sort((a,b)=>{
             return b.totalVolunteer-a.totalVolunteer
@@ -37,8 +37,6 @@ const getEmployeeVol=async(req,res)=>{
         console.log("getEmployeeScore",e)
         res.status(400).send("Error")
     }    
-
-
 
 }
 
@@ -65,8 +63,9 @@ const getGlobalEmpScores=async(req,res)=>{
     try{
         const globalScores=await Employee.find({})
         .select('username currentXP company id')
+        .populate({path:'company',select:'companyName'})
         globalScores.sort((a,b)=>{
-            return b.totalVolunteer-a.totalVolunteer
+            return b.currentXP-a.currentXP
         })
         res.send({globalScores})
 
@@ -78,4 +77,4 @@ const getGlobalEmpScores=async(req,res)=>{
 }
 
 
-module.exports={getGlobalScores,getEmployeeScores,getEmployeeVol}
+module.exports={getGlobalScores,getEmployeeScores,getEmployeeVol,getGlobalEmpScores}

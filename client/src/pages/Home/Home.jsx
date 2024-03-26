@@ -3,11 +3,9 @@ import styles from "./Home.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { pageBaseUrl } from "../../utils/general";
-<<<<<<< HEAD
 import Slider from "../../components/Home/Slider";
 import  logo  from "./how.png" 
-=======
->>>>>>> fed329fe177257bfe6c9bfd3f28b40f8eee36f8d
+
 
 function Home() {
   const [formData, setFormData] = useState({});
