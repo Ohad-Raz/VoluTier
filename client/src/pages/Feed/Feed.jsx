@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VolunteerCard from "../../components/VolunteerJobs/VolunteerCard";
 import styles from "./Feed.module.css";
 import axios from "axios";
 import { pageBaseUrl } from "../../utils/general";
+import { useLocation } from "react-router-dom";
 
 function Feed() {
   const [formData, setFormData] = useState({});
   const [filters, setfilters] = useState();
   const [volunteerJobs, setVolunteerJobs] = useState([]);
+  let location = useLocation();
+  console.log(location.state.volunteerData);
 
+  useEffect(() => {}, []);
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData);
   };
-
   const getVolunteerByFilter = async () => {
     try {
       const res = await axios.post(
@@ -81,7 +84,10 @@ function Feed() {
         <button onClick={getVolunteerByFilter}>Search</button>
       </div>
       <div className={styles.cardsContainer}>
-        <VolunteerCard volunteerJobs={volunteerJobs} />
+        <VolunteerCard
+          volunteerJobs={volunteerJobs}
+          location={location.state.volunteerData}
+        />
       </div>
     </div>
   );
