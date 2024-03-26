@@ -1,7 +1,6 @@
 import React from "react";
-import { Fade } from "react-slideshow-image";
-import styles from "./Slider.module.css";
-
+import { Fade, Zoom, Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 function Slider() {
   const slideImage = [
     {
@@ -31,6 +30,7 @@ function Slider() {
   ];
 
   const divStyle = {
+    height: "450px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -44,13 +44,16 @@ function Slider() {
   };
 
   return (
-    <div className={styles.slideContainer}>
+    <div
+      className="slide-container"
+      style={{ margin: "40px 0px 15px 0px", borderRadius: "10px" }}
+    >
       <Fade>
         {slideImage.map((image, index) => (
           <div key={index}>
-            <div style={{ ...divStyle, backgroundImage: `url(${image.url})` }}>
-              <span style={{spanStyle}}>{image.caption}</span>
-            </div>
+            <div
+              style={{ ...divStyle, backgroundImage: `url(${image.url})` }}
+            ></div>
           </div>
         ))}
       </Fade>

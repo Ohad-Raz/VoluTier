@@ -17,7 +17,7 @@ const getEmployee =  async(req,res)=>{
     try{
         const {role}=req.employee
         if(role=="employee"){
-            const link = await Employee.findById(req.employee.id)
+            const link = await Employee.findById(req.employee.id).populate("company")
             res.send({
                 link:{...link._doc,role}
             })
