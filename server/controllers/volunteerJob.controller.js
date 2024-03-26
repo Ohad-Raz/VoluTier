@@ -8,7 +8,7 @@ const volunteerJobController = {
     try{
         body.businessId = req.business.id
         const newJob = new VolunteerJob(body)
-        newJob.Id = newJob._id
+        newJob.id = newJob._id
         await newJob.save()
         res.send(body)
     }
@@ -105,25 +105,21 @@ const volunteerJobController = {
     try {
       const { jobId } = req.params;
 
-      // Find the job by ID
       const job = await VolunteerJob.findById(jobId);
       if (!job) {
         return res.status(404).json({ message: "Job not found" });
       }
 
-      // Check if the job is currently in the "upcoming" status
       if (job.status !== "active") {
         return res.status(400).json({ message: "Job is not in active" });
       }
-
-      // Update job status to "completed"
       job.status = "completed";
       await job.save();
 
-      // Award 15 CurrentXP to all employees who applied for this job
-      const employees = await Employee.find({ _id: { $in: job.applications } });
+      const employees = await Employee.find({ _id: { $in: job.applicants } });
       employees.forEach(async (employee) => {
         employee.currentXP += 15;
+        employee.totalVolunteer += 1;
         await employee.save();
       });
 
@@ -134,38 +130,31 @@ const volunteerJobController = {
       res.status(500).json({ message: error.message });
     }
   },
+
   updateJobStatusToActive: async () => {
     try {
-      // Find all upcoming jobs
       const upcomingJobs = await VolunteerJob.find({ status: "upcoming" });
 
-      // Get today's date
       const today = new Date();
-
-      // Set time to 6am for comparison
       const sixAM = new Date(today);
+
       sixAM.setHours(6, 0, 0, 0);
 
-      // Iterate through upcoming jobs
       for (const job of upcomingJobs) {
-        // Get the start date of the job
         const jobStartDate = new Date(job.startDate);
-
-        // Check if the job's start date matches today's date and time is 6am or later
         if (
           jobStartDate.getTime() === sixAM.getTime() ||
           jobStartDate.getTime() >= sixAM.getTime()
         ) {
-          // Update job status to "active"
           job.status = "active";
           await job.save();
-
         }
       }
     } catch (error) {
       console.error("Error updating job status to active:", error);
     }
   },
+
   getVolunteerByFilter: async (req, res) => {
     const { area, category, startDate, amount } = req.body;
     const query = {};
