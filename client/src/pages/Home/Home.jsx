@@ -4,20 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { pageBaseUrl } from "../../utils/general";
 import Slider from "../../components/Home/Slider";
-
-
-
 import logo from "./how.png";
-
-
 function Home() {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const getVolunteerByFilter = async () => {
     try {
       const res = await axios.post(
@@ -35,7 +28,6 @@ function Home() {
       console.log(error);
     }
   };
-
   return (
     <>
       <Slider />
@@ -63,7 +55,6 @@ function Home() {
           </div>
           <button onClick={getVolunteerByFilter}>Search</button>
         </div>
-
         <div className={styles.containerThree}>
           <img src={logo} alt="1" />
         </div>
@@ -71,5 +62,4 @@ function Home() {
     </>
   );
 }
-
 export default Home;
