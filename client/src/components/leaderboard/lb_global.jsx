@@ -17,7 +17,7 @@ function Lb_global() {
     useEffect(()=>{
         const globalBoardFetch=async()=>{
             try {
-                const response= await fetch(`${pageBaseUrl}leaderboard/global`,getOptions)
+                const response= await fetch(`${pageBaseUrl}leaderboard/global/company`,getOptions)
                 const data=await response.json()
                 if(data.globalScores){
                     console.log(data.globalScores)
