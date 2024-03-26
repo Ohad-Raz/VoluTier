@@ -7,6 +7,8 @@ import { pageBaseUrl } from "../../utils/general";
 function Feed() {
   const [formData, setFormData] = useState({});
   const [filters, setfilters] = useState();
+  const [volunteerJobs, setVolunteerJobs] = useState([]);
+
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,7 +28,7 @@ function Feed() {
       );
       const data = res.data;
       console.log(data);
-      setfilters(data)
+      setVolunteerJobs(data);
     } catch (error) {
       console.log(error);
     }
@@ -63,13 +65,23 @@ function Feed() {
             <option value="education">education</option>
             <option value="software">software</option>
           </select>
-          <input type="text" name="city" placeholder="City" onChange={changeHandler} />
-          <input type="text" name="amount" placeholder="Amount of volunteers" onChange={changeHandler} />
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            onChange={changeHandler}
+          />
+          <input
+            type="text"
+            name="amount"
+            placeholder="Amount of volunteers"
+            onChange={changeHandler}
+          />
         </div>
         <button onClick={getVolunteerByFilter}>Search</button>
       </div>
       <div className={styles.cardsContainer}>
-        <VolunteerCard />
+        <VolunteerCard volunteerJobs={volunteerJobs} />
       </div>
     </div>
   );
