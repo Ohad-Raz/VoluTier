@@ -1,18 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getOptions, pageBaseUrl } from '../../utils/general'
 import Lb_global from '../../components/leaderboard/lb_global'
 import Lb_EmpGlobal from '../../components/leaderboard/lb_EmpGlobal'
 import Lb_companyScore from '../../components/leaderboard/lb_companyScore'
 import Lb_companyVol from '../../components/leaderboard/lb_companyVol'
+import { UserContext } from '../../context/UserContext'
 
 function LeaderBoard() {
 
-    return(<div>
+    const {UserID,UserObj}=useContext(UserContext)
+    const role=UserObj.role??""
+    
+
+
+    return(
+        
+    <div style={{display:'flex',flexDirection:'column',rowGap:'20px'}}>
         <Lb_global/>
         <Lb_EmpGlobal/>
-        <Lb_companyScore companyID={'66014a99cfa48558b53fa59b'}/>
-        <Lb_companyVol companyID={'66014a99cfa48558b53fa59b'}/>
+        {
+            UserID&&role!='business'?<>
+              <Lb_companyScore companyID={role=='company'?UserID:UserObj.company.id}/>
+                <Lb_companyVol companyID={role=='company'?UserID:UserObj.company.id}/>
 
+            </>:
+            <h1>login to show more</h1>
+        }
+      
     </div>)
 }
 
