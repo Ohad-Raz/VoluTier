@@ -1,20 +1,26 @@
 const mongoose = require("mongoose");
 
 const volunteerJobSchema = new mongoose.Schema({
+  id: {
+    type: String
+  },
   businessId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Business",
-    required: false,
   },
   title: {
     type: String,
     required: true,
   },
+  area:{
+    type:String,
+    required: true
+  },
   location: {
     type: String,
     required: true,
   },
-  
+
   description: {
     type: String,
     required: true,
@@ -66,7 +72,7 @@ const volunteerJobSchema = new mongoose.Schema({
 });
 
 volunteerJobSchema.virtual("numApplications").get(function () {
-  return this.applications.length;
+  return this.applicants.length;
 });
 
 const VolunteerJob = mongoose.model("VolunteerJob", volunteerJobSchema);

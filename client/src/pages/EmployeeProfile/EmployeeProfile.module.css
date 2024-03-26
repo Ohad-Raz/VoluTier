@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: azure;
+    height: 60em;
+}
+
+.info{
+    display: flex;
+    justify-content: flex-start;
+    gap: 5em;
+    margin-top: 5em;
+}
+
+.name{
+    display: flex;
+    flex-direction: column;
+}
+
+.name img{
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
+    align-self: center;
+}
+
+.company{
+    margin-top: 8em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lvl{
+    margin-top: 7em;
+}
+
+

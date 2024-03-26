@@ -10,6 +10,7 @@ import AuthPage from './pages/Auth/authPage';
 import UserManager from './context/UserContext';
 import LeaderBoard from "./pages/leaderBoard/leaderBoard";
 import SingleJob from "./pages/SingleJob/SingleJob";
+import EmployeeProfile from "./pages/EmployeeProfile/EmployeeProfile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/auth' element={<AuthPage/>}/>
             <Route path='/leaderboard' element={<LeaderBoard/>}/>
             <Route path='/volunteerJobs/:volunteerJobsId' element={<SingleJob/>}/>
+            <Route path='/profile' element={<EmployeeProfile/>}/>
 
           </Routes>
         </main>
