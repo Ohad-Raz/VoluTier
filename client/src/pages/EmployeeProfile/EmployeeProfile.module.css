@@ -35,4 +35,13 @@
     margin-top: 7em;
 }
 
-
+.contact{
+    margin-top: 10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    width: 100%;
+    border-top: 1px solid;
+    border-left: 1px solid;
+}

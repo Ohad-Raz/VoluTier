@@ -20,6 +20,13 @@ function EmployeeProfile() {
       </div>
       <div className={styles.contact}>
         <h1>Contact</h1>
+        <div className={styles.contactInfo}>
+          <p>{UserObj.email}</p>
+          <p>{UserObj.phone}</p>
+          <p>{UserObj.location}</p>
+          <p></p>
+          <p></p>
+        </div>
       </div>
     </div>
   );
