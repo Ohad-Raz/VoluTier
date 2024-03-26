@@ -23,7 +23,7 @@ function App() {
             <Route path="/feed" element={<Feed />} />
             <Route path='/auth' element={<AuthPage/>}/>
             <Route path='/leaderboard' element={<LeaderBoard/>}/>
-            <Route path='/volunteerJobs/:volunteerJobsId' element={<SingleJob/>}/>
+            <Route path='/volunteerJobs/:volunteerJobId' element={<SingleJob/>}/>
             <Route path='/profile' element={<EmployeeProfile/>}/>
 
           </Routes>
