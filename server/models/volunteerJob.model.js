@@ -4,7 +4,6 @@ const volunteerJobSchema = new mongoose.Schema({
   businessId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Business",
-    required: false,
   },
   title: {
     type: String,
