@@ -48,7 +48,7 @@ function EmployeeProfile() {
         </div>
       </div>
       <div className={styles.leaderboard}>
-        
+        Leaderboard
       </div>
     </div>
   );
