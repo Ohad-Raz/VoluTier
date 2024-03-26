@@ -17,7 +17,7 @@ const employeeSchema = new mongoose.Schema(
         github:{type: String},
         linkendin:{type: String},
         company:{type: mongoose.Types.ObjectId, ref: "Company"},
-        achievements: {type: mongoose.Types.ObjectId, ref: "Achievements" },
+        achievements: [{type: mongoose.Types.ObjectId, ref: "Achievement" }],
 
         imageUrl: {type:String ,default:"https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"},
     }

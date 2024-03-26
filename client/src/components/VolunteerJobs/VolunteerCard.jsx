@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import styles from './VolunteerCard.module.css'; // Import CSS module for styling
-import { pageBaseUrl } from '../../utils/general';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styles from "./VolunteerCard.module.css"; // Import CSS module for styling
+import { pageBaseUrl } from "../../utils/general";
+import { Link } from "react-router-dom";
 
-function VolunteerCard() {
-  const [volunteerJobs, setVolunteerJobs] = useState([]);
+function VolunteerCard(props) {
+  const { volunteerJobs } = props;
+  // const [volunteerJobs, setVolunteerJobs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +14,7 @@ function VolunteerCard() {
         const response = await axios.get(`${pageBaseUrl}volunteerJobs`);
         setVolunteerJobs(response.data);
       } catch (error) {
-        console.error('Error fetching volunteer jobs:', error.message);
+        console.error("Error fetching volunteer jobs:", error.message);
       }
     };
 
@@ -32,7 +33,6 @@ function VolunteerCard() {
             <p className={styles.info}>Max Amount: {volunteerJob.maxAmount}</p> {/* Max Amount */}
             <p className={styles.info}>Start Date: {new Date(volunteerJob.startDate).toLocaleDateString()}</p> {/* Start Date */}
             <p className={styles.info}>End Date: {new Date(volunteerJob.endDate).toLocaleDateString()}</p> {/* End Date */}
-          
             <p className={styles.info}>Location: {volunteerJob.location}</p> {/* Location */}
   
           
@@ -47,8 +47,8 @@ function VolunteerCard() {
             {/* Created At: Display createdAt if needed */}
             <button className={styles.button}>More information</button>
           </div>
+
           </Link>
-          
         </div>
       ))}
     </div>
