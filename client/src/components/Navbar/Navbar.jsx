@@ -113,7 +113,7 @@ export default function Navbar(props) {
                 <FontAwesomeIcon icon={props.isDark?faSun:faMoon}/>
               </IconButton>
               <Box sx={{display:"flex"}} onClick={UserID?handleUserMenuOpen:() => handleNavigate("/auth")}>
-                {UserID?<p>{UserObj.fullname}</p>:<Button
+                {UserID?<p>{UserObj.username}</p>:<Button
                   variant="contained"
                   color="success"
                   onClick={() => handleNavigate("/auth")}

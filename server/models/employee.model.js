@@ -12,8 +12,10 @@ const employeeSchema = new mongoose.Schema(
         currentXP:{type: Number , default: 0},
         Level:{type: Number , default: 1},
         totalVolunteer:{type: Number , default: 0},
-        company:{type: String},
+        phone:{type: String},
+        company:{type: mongoose.Types.ObjectId, ref: "Company"},
         achievements: {type: mongoose.Types.ObjectId, ref: "Achievements" },
+
         imageUrl: {type:String ,default:"https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"},
     }
 )
