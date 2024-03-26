@@ -11,17 +11,19 @@ import Paper from '@mui/material/Paper';
 
 
 
-function Lb_EmpGlobal() {
-    const [globalBoard, setglobalBoard] = useState([])
+function Lb_companyVol({companyID}) {
+
+
+    const [globalBoard, setglobalBoard] = useState({companyName:"",employeeList:[]})
 
     useEffect(()=>{
         const globalBoardFetch=async()=>{
             try {
-                const response= await fetch(`${pageBaseUrl}leaderboard/global/employee`,getOptions)
+                const response= await fetch(`${pageBaseUrl}leaderboard/company/vol/${companyID}`,getOptions)
                 const data=await response.json()
-                if(data.globalScores){
-                    console.log(data.globalScores)
-                    setglobalBoard(data.globalScores)
+                if(data.companyName){
+                    console.log(data)
+                    setglobalBoard(data)
                 }
                 else{
                     console.log("global_board",data)
@@ -33,25 +35,25 @@ function Lb_EmpGlobal() {
             }
         }
         globalBoardFetch()
-    },[])
+    },[companyID])
 
 
   
   
     return (
         <TableContainer component={Paper}>
-             <h1 style={{textAlign:'center'}}>Global Employee Rank</h1>
+              <h1 style={{textAlign:'center'}}>Volunteer Leaderboard: {globalBoard.companyName}  </h1>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>place</TableCell>
-            <TableCell align="right">company</TableCell>
+            <TableCell>Rank</TableCell>
+            <TableCell align="right">Times volunteering</TableCell>
+            <TableCell align="right">profession</TableCell>
             <TableCell align="right">user</TableCell>
-            <TableCell align="right">XP</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {globalBoard.map((row,ind) => (
+          {globalBoard.employeeList.map((row,ind) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -59,7 +61,8 @@ function Lb_EmpGlobal() {
               <TableCell>
                 {ind+1}.
               </TableCell>
-              <TableCell align="right">{row.company.companyName}</TableCell>
+              <TableCell align="right">{row.totalVolunteer}</TableCell>
+              <TableCell align="right">{row.profession}</TableCell>
               <TableCell align="right">{row.username}</TableCell>
               <TableCell align="right">{row.currentXP}</TableCell>
             </TableRow>
@@ -70,4 +73,4 @@ function Lb_EmpGlobal() {
     )
 }
 
-export default Lb_EmpGlobal
+export default Lb_companyVol

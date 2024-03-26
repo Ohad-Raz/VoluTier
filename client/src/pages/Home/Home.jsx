@@ -4,7 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { pageBaseUrl } from "../../utils/general";
 import Slider from "../../components/Home/Slider";
+
+
+
 import logo from "./how.png";
+
 
 function Home() {
   const [formData, setFormData] = useState({});
