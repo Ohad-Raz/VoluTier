@@ -17,8 +17,6 @@ router.delete('/:id', volunteerJobController.deleteById);
 router.post('/apply/:jobId', volunteerJobController.apply);
 router.post('/getVolunteerByFilter', volunteerJobController.getVolunteerByFilter);
 
-
-
 router.post('/updateStatusToActive', (req, res) => {
     try {
         updateJobStatusToActive();
