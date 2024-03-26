@@ -1,4 +1,5 @@
 const { Company } = require("../models/company.model")
+const { Employee } = require("../models/employee.model")
 
 const getEmployeeScores=async(req,res)=>{
     try {
@@ -48,6 +49,22 @@ const getGlobalScores=async(req,res)=>{
     try{
         const globalScores=await Company.find({})
         .select('companyName totalVolunteer id')
+        globalScores.sort((a,b)=>{
+            return b.totalVolunteer-a.totalVolunteer
+        })
+        res.send({globalScores})
+
+    }catch(e){
+        console.log("globalScores",e)
+        res.status(400).send("Error")
+    }
+
+}
+
+const getGlobalEmpScores=async(req,res)=>{
+    try{
+        const globalScores=await Employee.find({})
+        .select('username currentXP company id')
         globalScores.sort((a,b)=>{
             return b.totalVolunteer-a.totalVolunteer
         })

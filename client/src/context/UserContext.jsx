@@ -54,13 +54,12 @@ export default function UserManager({children}) {
       }
     }
     
-    // const logOut=()=>{
-    //     signOut(auth).then(() => {
-    //       setUserObj({email:'',id:'',error:''})
-    //     }).catch((error) => {
-    //       console.log(error)
-    //     })
-    // };
+    const logOut=()=>{
+      
+      setUserToken('')
+      setUserObj({})
+      localStorage.removeItem('volun_token')
+    };
 
     const[UserObj,setUserObj]=useState({id:''})
     const [UserToken,setUserToken]=useState('')
@@ -85,7 +84,7 @@ export default function UserManager({children}) {
     },[UserToken,UserObj])
 
 
-    const val={SignUpFunc,LoginFunc,UserObj,UserToken,UserID:UserObj.id,setUserObj}
+    const val={SignUpFunc,LoginFunc,UserObj,UserToken,UserID:UserObj.id,setUserObj,logOut}
 
   
     return (
