@@ -148,7 +148,7 @@ export default function Navbar(props) {
                 horizontal: "left",
               }}
             >
-              <MenuItem>Profile</MenuItem>
+              <MenuItem onClick={() => handleNavigate("/profile")}>Profile</MenuItem>
               <MenuItem onClick={logOut} sx={{display:"flex",columnGap:"1vw",alignItems:'center'}} ><span>Log Out</span> <FontAwesomeIcon icon={faRightFromBracket} />  </MenuItem>
             </Menu>
 

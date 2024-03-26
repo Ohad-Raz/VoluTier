@@ -24,6 +24,7 @@ function SingleJobCard() {
   if (!volunteerJob) {
     return <div>Loading...</div>; // Show loading indicator while fetching data
   }
+  console.log(volunteerJob);
 
   return (
     <div className={styles.cardContainer}>
@@ -38,7 +39,7 @@ function SingleJobCard() {
           <p className={styles.info}>End Date: {new Date(volunteerJob.endDate).toLocaleDateString()}</p>
           <p className={styles.info}>Estimated Hours: {volunteerJob.estimatedHours}</p>
           <p className={styles.info}>Location: {volunteerJob.location}</p>
-          <p className={styles.info}>Business ID: {volunteerJob.businessId}</p>
+          <p className={styles.info}>Business Name: {volunteerJob.businessId?.name}</p>
           <p className={styles.info}>Contact Phone: {volunteerJob.contactPhone}</p>
           <div className={styles.categories}>
             {volunteerJob.categories.map((category, index) => (
