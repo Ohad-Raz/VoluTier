@@ -26,7 +26,10 @@ const volunteerJobController = {
 
   getById: async (req, res) => {
     try {
-      const volunteerJob = await VolunteerJob.findById(req.params.id);
+      const volunteerJob = await VolunteerJob.findById(req.params.id).populate("businessId").populate({
+        path: "applicants",
+        model: "Employee" // Specify the model name for the reference
+      });;
       if (!volunteerJob) {
         res.status(404).json({ message: "Volunteer job not found" });
       } else {
