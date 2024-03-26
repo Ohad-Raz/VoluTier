@@ -1,38 +1,98 @@
-.container{
+.container {
     display: flex;
-    flex-direction: column;
-    background-color: azure;
+    flex-direction: row; /* Change to row */
+    justify-content: space-between; /* Add this line */
     height: 60em;
-}
-
-.info{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .info {
+    font-size: 1.4em;
     display: flex;
     justify-content: flex-start;
     gap: 5em;
-    margin-top: 5em;
-}
-
-.name{
+    margin-top: 4em;
+  }
+  
+  .name {
     display: flex;
     flex-direction: column;
-}
-
-.name img{
+    gap: 1em;
+  }
+  
+  .name img {
     height: 10em;
     width: 10em;
     border-radius: 50%;
     align-self: center;
-}
-
-.company{
-    margin-top: 8em;
+  }
+  
+  .company {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
+    margin-top: 11.2em;
+  }
+  
+  .contact {
+    text-align: center;
+    margin-top: 10em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    height: 30%;
+    padding: 10px 20px;
+    width: 20%;
+    background-color: rgb(228, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 1.95px 1.95px 2.6px;
+    border-radius: 5px;
+  }
+  
+  .contactInfo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .icons a {
+    font-size: 3em;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .xp {
+    padding: 30px 20px;
+    margin-top: 10em;
+    text-align: center;
+    width: 20%; 
+    border-radius: 10px;
+    background-color: rgb(228, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
 
-.lvl{
-    margin-top: 7em;
-}
-
-
+  .xpInfo{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  
+  .leaderboard{
+    position: absolute;
+    z-index: 1;
+    background-color: aquamarine;
+    width: 75rem;
+    height: 30rem;
+    bottom: 1em;
+  }

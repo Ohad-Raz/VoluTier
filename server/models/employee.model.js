@@ -13,6 +13,9 @@ const employeeSchema = new mongoose.Schema(
         Level:{type: Number , default: 1},
         totalVolunteer:{type: Number , default: 0},
         phone:{type: String},
+        location:{type: String},
+        github:{type: String},
+        linkendin:{type: String},
         company:{type: mongoose.Types.ObjectId, ref: "Company"},
         achievements: {type: mongoose.Types.ObjectId, ref: "Achievements" },
 
