@@ -5,3 +5,67 @@
 .feedContainer{
 margin-top: 2rem;
 }
+/* Feed.module.css */
+
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem; /* Changed to rem units */
+}
+
+.containerOne {
+  width: 100%;
+  max-width: 37.5rem; /* Changed to rem units */
+}
+
+.containerOne h2 {
+  margin-bottom: 1rem; /* Changed to rem units */
+  font-size: 1.5rem;
+}
+
+.selectContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem; /* Changed to rem units */
+}
+
+.selectContainer select,
+.selectContainer input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem; /* Changed to rem units */
+  width: calc(50% - 0.3125rem); /* Two inputs per row */
+}
+
+.selectContainer input[type="text"] {
+  width: 100%; /* Full width for text inputs */
+}
+
+.searchBtn {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+
+  padding: 0.5rem 1rem;
+  background-color: #145591;
+  color: white;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+
+}
+
+.selectContainer button:hover {
+  background-color: #0d3a5e;
+}
+
+.cardsContainer {
+  margin-top: 1rem; /* Changed to rem units */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem; /* Changed to rem units */
+  justify-content: center;
+}

@@ -21,8 +21,9 @@ body {
 }
 
 .imgContainer {
-  display: flex;
-  justify-content: center;
+  display: block;
+  height: 28rem;
+  overflow: hidden;
 }
 
 .image {
