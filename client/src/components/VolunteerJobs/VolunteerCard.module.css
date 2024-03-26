@@ -6,6 +6,7 @@
 
 .cardContainer a {
   text-decoration: none;
+
 }
 
 .card {
@@ -16,6 +17,8 @@
   overflow: hidden;
   background: linear-gradient(to bottom right, #bed7f2, #f0f8ff); /* Light blue gradient background */
   transition: background-color 1s, transform 0.5s; /* Smooth transition on hover */
+  min-width: 23rem;
+  max-width: 23rem;
 }
 
 .card:hover {
@@ -27,6 +30,7 @@
   display: block;
   height: auto;
   max-height: 15rem;
+  width: 100%;
   object-fit: cover;
   border-bottom: 1px solid #ccc;
 }

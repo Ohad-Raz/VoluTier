@@ -4,19 +4,17 @@ import styles from "./Feed.module.css";
 import axios from "axios";
 import { pageBaseUrl } from "../../utils/general";
 import { useLocation } from "react-router-dom";
-
 function Feed() {
   const [formData, setFormData] = useState({});
+  const [filters, setfilters] = useState();
   const [volunteerJobs, setVolunteerJobs] = useState([]);
   let location = useLocation();
-
+  // console.log(location.state.volunteerData);
   useEffect(() => {}, []);
-
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData);
   };
-
   const getVolunteerByFilter = async () => {
     try {
       const res = await axios.post(
@@ -35,33 +33,28 @@ function Feed() {
       console.log(error);
     }
   };
-
   return (
     <div className={styles.feedContainer}>
       <div className={styles.containerOne}>
-        <h2>Find volunteering opportunities</h2>
+        <h2>Find volunteering</h2>
         <div className={styles.selectContainer}>
           <select name="area" onChange={changeHandler}>
-            <option value="" disabled selected>
-              The volunteer area
-            </option>
+            <option value="">The volunteer area</option>
             <option value="north">North</option>
             <option value="west">West</option>
             <option value="east">East</option>
             <option value="south">South</option>
           </select>
-        
+
           <select name="category" onChange={changeHandler}>
-            <option value="" disabled selected>
-              {"Who would you like to help? (All)"}
-            </option>
+            <option value="">{"Who would you like to help? (All)"}</option>
             <option value="Environment">Environment</option>
-            <option value="at risk youth">At-risk Youth</option>
-            <option value="elderly people">Elderly People</option>
+            <option value="at risk youth">at risk youth</option>
+            <option value="elderly people">elderly people</option>
             <option value="Building">Building</option>
-            <option value="agriculture">Agriculture</option>
-            <option value="education">Education</option>
-            <option value="software">Software</option>
+            <option value="agriculture">agriculture</option>
+            <option value="education">education</option>
+            <option value="software">software</option>
           </select>
           <input
             type="text"
@@ -70,9 +63,7 @@ function Feed() {
             onChange={changeHandler}
           />
         </div>
-        <button className={styles.searchBtn} onClick={getVolunteerByFilter}>
-          Search
-        </button>
+        <button className={styles.searchBtn} onClick={getVolunteerByFilter}>Search</button>
       </div>
       <div className={styles.cardsContainer}>
         <VolunteerCard
@@ -83,5 +74,4 @@ function Feed() {
     </div>
   );
 }
-
 export default Feed;

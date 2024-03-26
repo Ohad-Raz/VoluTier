@@ -62,8 +62,7 @@ export default function Navbar(props) {
       <MenuItem onClick={() => handleNavigate("/")}><img className={styles.logo} src={Logo}/></MenuItem>,
         <MenuItem onClick={() => handleNavigate("/")}>Home</MenuItem>,
         <MenuItem onClick={() => handleNavigate("/Feed")}>Feed</MenuItem>,
-        <MenuItem onClick={() => handleNavigate("/Company")}>Company</MenuItem>,
-        <MenuItem onClick={() => handleNavigate("/leaderboard")}>Leader Board</MenuItem>,
+        <MenuItem onClick={() => handleNavigate("/leaderboard")}>Leaderboard</MenuItem>,
         
     ]
 
@@ -142,7 +141,7 @@ export default function Navbar(props) {
   <IconButton size="large" edge="end" aria-label="account of current user" color="inherit">
     <FontAwesomeIcon icon={faUserCircle} />
   </IconButton>
-</Box>;
+</Box>
               <Menu
               id="menu-appbar"
               anchorEl={userAnchor}
