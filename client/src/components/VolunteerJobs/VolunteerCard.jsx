@@ -8,6 +8,8 @@ function VolunteerCard(props) {
   const { volunteerJobs, location } = props;
   const [volunteerJobsUpload, setVolunteerJobsUpload] = useState([]);
 
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,13 +17,15 @@ function VolunteerCard(props) {
         setVolunteerJobsUpload(response.data);
         console.log(response.data);
         console.log(volunteerJobs);
+
       } catch (error) {
         console.error("Error fetching volunteer jobs:", error.message);
       }
     };
-
     fetchData();
   }, []);
+
+
 
   return (
     <div className={styles.cardContainer}>

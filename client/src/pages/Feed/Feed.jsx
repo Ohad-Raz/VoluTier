@@ -9,8 +9,21 @@ function Feed() {
   const [filters, setfilters] = useState();
   const [volunteerJobs, setVolunteerJobs] = useState([]);
   let location = useLocation();
-  // console.log(location.state.volunteerData);
-  useEffect(() => {}, []);
+
+
+  useEffect(() => {
+    const updateJobStatusToActive = async () => {
+      try {
+        const response = await axios.post('http://localhost:4200/api/v1/volunteerJobs/updateStatusToActive');
+        console.log(response.data); // Log the response data if needed
+      } catch (error) {
+        console.error('Error updating job status to active:', error);
+      }
+    };
+    updateJobStatusToActive();
+  }, []);
+
+
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData);
