@@ -2,6 +2,7 @@ const { Employee } = require('../models/employee.model')
 const bcrypt = require("bcryptjs")
 const { generateToken } = require('../utils/jwt');
 const { Company } = require('../models/company.model');
+const { Business } = require('../models/business.model')
 
 const getEmployees = async (req, res) => {
     try {
@@ -23,6 +24,11 @@ const getEmployee =  async(req,res)=>{
             })
         }else if(role=="company"){
             const link = await Company.findById(req.employee.id)
+            res.send({
+                link:{...link._doc,role}
+            })
+        }else if(role=="business"){
+            const link = await Business.findById(req.employee.id)
             res.send({
                 link:{...link._doc,role}
             })

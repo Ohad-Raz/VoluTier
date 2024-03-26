@@ -35,7 +35,7 @@ const Login = async (req, res) =>{
         if(isMatch){
             const token = generateToken({id: business._id ,email: business.email, role: "business"})
 
-        return res.send({user:{...business,role:'business'}, token});
+        return res.send({user:{...business._doc,role:'business'}, token});
 
     } 
     return res.status(401).send("Email or password are incorrect");

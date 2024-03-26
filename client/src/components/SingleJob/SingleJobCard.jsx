@@ -8,7 +8,8 @@ import { UserContext } from '../../context/UserContext';
 
 function SingleJobCard() {
   const [volunteerJob, setVolunteerJob] = useState(null);
-  const { volunteerJobId } = useParams(); // Use correct parameter name
+  const { UserObj } = useContext(UserContext)
+  const { volunteerJobId } = useParams();
   const {UserID}=useContext(UserContext)
   const [formData, setFormData] = useState({
     name: '',
@@ -23,14 +24,14 @@ function SingleJobCard() {
       try {
         const response = await axios.get(`${pageBaseUrl}volunteerJobs/${volunteerJobId}`);
         setVolunteerJob(response.data);
+        console.log(UserObj.role);
         console.log(response.data);
       } catch (error) {
         console.error('Error fetching volunteer job:', error.message);
       }
     };
-
     fetchData();
-  }, [volunteerJobId]); // Trigger useEffect when volunteerJobsId changes
+  }, [volunteerJobId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +51,18 @@ function SingleJobCard() {
       // Add error handling here
     }
   };
+
+  const handleCompleteJob = async () => {
+    try {
+      const response = await axios.patch(`${pageBaseUrl}volunteerJobs/complete/${volunteerJobId}`);
+      console.log(response.data);
+      location.reload()
+    } catch (error) {
+      console.error('Error completing job:', error.message);
+      // Add error handling here
+    }
+  };
+
 
   if (!volunteerJob) {
     return <div>Loading...</div>; // Show loading indicator while fetching data
@@ -84,18 +97,24 @@ function SingleJobCard() {
             ))}
           </div>
             <br></br>
-            {volunteerJob.applicants.includes(UserID)?<i><h5>Already applied</h5></i>:<form onSubmit={handleSubmit} className={styles.form}>
+            {volunteerJob.applicants.includes(UserID) || UserObj.role == "business" ?<i><h5>Already applied</h5></i>:
+            <form onSubmit={handleSubmit} className={styles.form}>
             <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
             <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
             <input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
             <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required />
             <textarea name="importantInfo" placeholder="Important Information? Let us know" value={formData.importantInfo} onChange={handleChange}></textarea>
-            <button type="submit" className={styles.button}>Apply</button>
+           <button type="submit" className={styles.button}>Apply</button>
+            
           </form>}
           <br></br>
           <hr></hr>
+          <div>
+            {UserObj.role === "completed" ? <button type="submit" onClick={handleCompleteJob} className={styles.button}>End Activity</button> : null  }
+           
+            </div>
           <br></br>
-          <p className={styles.info}>Status: {volunteerJob.status}</p> {/* Status */}
+          <p className={styles.info}>Status: {volunteerJob.status}</p>
         </div>
       </div>
     </div>
