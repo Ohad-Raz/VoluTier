@@ -10,7 +10,7 @@ function Feed() {
   const [filters, setfilters] = useState();
   const [volunteerJobs, setVolunteerJobs] = useState([]);
   let location = useLocation();
-  console.log(location.state.volunteerData);
+  // console.log(location.state.volunteerData);
 
   useEffect(() => {}, []);
 
@@ -74,19 +74,13 @@ function Feed() {
             placeholder="City"
             onChange={changeHandler}
           />
-          <input
-            type="text"
-            name="amount"
-            placeholder="Amount of volunteers"
-            onChange={changeHandler}
-          />
         </div>
         <button onClick={getVolunteerByFilter}>Search</button>
       </div>
       <div className={styles.cardsContainer}>
         <VolunteerCard
           volunteerJobs={volunteerJobs}
-          location={location.state.volunteerData}
+          location={location.state?.volunteerData}
         />
       </div>
     </div>
